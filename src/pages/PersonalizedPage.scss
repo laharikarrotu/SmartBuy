@@ -1,0 +1,116 @@
+// .personalized-container {
+//   padding: 2rem;
+//   max-width: 1200px;
+//   margin: 0 auto;
+
+//   h1 {
+//     color: var(--Neutral-90);
+//     margin-bottom: 2rem;
+//   }
+
+//   .personalized-content {
+//     .welcome-section {
+//       background: var(--Neutral-15);
+//       padding: 2rem;
+//       border-radius: 8px;
+//       margin-bottom: 2rem;
+
+//       h2 {
+//         color: var(--Blue-500);
+//         margin-bottom: 1rem;
+//       }
+//     }
+
+//     .recommendations {
+//       h3 {
+//         margin-bottom: 1.5rem;
+//       }
+
+//       .recommendation-grid {
+//         display: grid;
+//         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//         gap: 2rem;
+
+//         .recommendation-item {
+//           background: white;
+//           padding: 1.5rem;
+//           border-radius: 8px;
+//           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+//           h4 {
+//             color: var(--Blue-500);
+//             margin-bottom: 1rem;
+//           }
+
+//           ul {
+//             list-style: none;
+//             padding: 0;
+
+//             li {
+//               padding: 0.5rem 0;
+//               color: var(--Neutral-70);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// } 
+
+.promotion-banner {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+
+  &.boom {
+    animation: boom 1s ease;
+  }
+
+  .promotion-text {
+    animation: glow 2s infinite;
+  }
+
+  .countdown {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-family: monospace;
+  }
+}
+
+@keyframes boom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+  50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6); }
+  100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 10px;
+}
+
+.discounted-price {
+  color: #ff4444;
+  font-weight: bold;
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+} 
