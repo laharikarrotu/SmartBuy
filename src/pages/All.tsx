@@ -1,280 +1,359 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import './All.scss';
 
 interface Product {
-  name: string;
-  status?: string;
-  colors: string;
-  originalPrice: number;
-  discountedPrice: number;
-  images: string[];
+  Name: string;
+  Category: string;
+  Price: string;
+  DiscountedPrice?: number;
+  Image: string;
+  Link: string;
 }
 
-export const All = () => {
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
-  const [products] = useState<Product[]>([
-    {
-      name: "Wool Boyfriend Shirt Jacket",
-      status: "Best seller",
-      colors: "2 colors",
-      originalPrice: 188.00,
-      discountedPrice: 37.00,
-      images: [
-        "https://www.gap.com/webcontent/0056/179/974/cn56179974.jpg",
-        "https://www.gap.com/webcontent/0056/180/123/cn56180123.jpg",
-        "https://www.gap.com/webcontent/0056/182/361/cn56182361.jpg",
-        "https://www.gap.com/webcontent/0056/180/145/cn56180145.jpg"
-      ]
-    },
-    {
-      name: "Modern Rib Cropped T-Shirt",
-      status: "Selling fast",
-      colors: "15 colors",
-      originalPrice: 29.95,
-      discountedPrice: 19.99,
-      images: [
-        "https://www.gap.com/webcontent/0056/257/750/cn56257750.jpg",
-        "https://www.gap.com/webcontent/0056/257/806/cn56257806.jpg",
-        "https://www.gap.com/webcontent/0056/257/808/cn56257808.jpg",
-        "https://www.gap.com/webcontent/0056/109/980/cn56109980.jpg"
-      ]
-    },
-    {
-      name: "High Rise Vintage Slim Jeans",
-      status: "Best seller",
-      colors: "2 colors",
-      originalPrice: 79.95,
-      discountedPrice: 31.00,
-      images: [
-        "https://www.gap.com/webcontent/0055/238/350/cn55238350.jpg",
-        "https://www.gap.com/webcontent/0055/237/806/cn55237806.jpg",
-        "https://www.gap.com/webcontent/0055/237/807/cn55237807.jpg",
-        "https://www.gap.com/webcontent/0055/237/982/cn55237982.jpg"
-      ]
-    },
-    {
-      name: "Big Puff Coat",
-      status: "Selling fast",
-      colors: "1 color",
-      originalPrice: 248.00,
-      discountedPrice: 169.99,
-      images: [
-        "https://www.gap.com/webcontent/0056/671/389/cn56671389.jpg",
-        "https://www.gap.com/webcontent/0056/668/444/cn56668444.jpg",
-        "https://www.gap.com/webcontent/0056/671/434/cn56671434.jpg",
-        "https://www.gap.com/webcontent/0056/671/447/cn56671447.jpg"
-      ]
-    },
-    {
-      name: "Cropped Duvet Wrap Puffer Jacket",
-      status: "Really big deal",
-      colors: "3 colors",
-      originalPrice: 168.00,
-      discountedPrice: 67.00,
-      images: [
-        "https://www.gap.com/webcontent/0056/840/860/cn56840860.jpg",
-        "https://www.gap.com/webcontent/0056/840/875/cn56840875.jpg",
-        "https://www.gap.com/webcontent/0056/840/881/cn56840881.jpg",
-        "https://www.gap.com/webcontent/0056/840/890/cn56840890.jpg"
-      ]
-    },
-    {
-      name: "High Rise BiStretch Flare Pants",
-      status: "Best seller",
-      colors: "2 colors",
-      originalPrice: 79.95,
-      discountedPrice: 39.00,
-      images: [
-        "https://www.gap.com/webcontent/0055/285/967/cn55285967.jpg",
-        "https://www.gap.com/webcontent/0055/285/974/cn55285974.jpg",
-        "https://www.gap.com/webcontent/0055/286/119/cn55286119.jpg",
-        "https://www.gap.com/webcontent/0055/286/114/cn55286114.jpg"
-      ]
-    },
-    {
-      name: "Modern Rib Cropped T-Shirt",
-      status: "Really big deal",
-      colors: "15 colors",
-      originalPrice: 29.95,
-      discountedPrice: 14.00,
-      images: [
-        "https://www.gap.com/webcontent/0056/223/918/cn56223918.jpg",
-        "https://www.gap.com/webcontent/0056/189/594/cn56189594.jpg",
-        "https://www.gap.com/webcontent/0056/189/609/cn56189609.jpg",
-        "https://www.gap.com/webcontent/0056/105/781/cn56105781.jpg"
-      ]
-    },
-    {
-      name: "Modern Rib Cropped Boatneck T-Shirt",
-      status: "50% off: limited time",
-      colors: "5 colors",
-      originalPrice: 34.95,
-      discountedPrice: 24.99,
-      images: [
-        "https://www.gap.com/webcontent/0056/090/989/cn56090989.jpg",
-        "https://www.gap.com/webcontent/0056/090/976/cn56090976.jpg",
-        "https://www.gap.com/webcontent/0056/090/981/cn56090981.jpg",
-        "https://www.gap.com/webcontent/0056/014/810/cn56014810.jpg"
-      ]
-    },
-    {
-      name: "Icon Denim Jacket",
-      status: "Selling fast",
-      colors: "2 colors",
-      originalPrice: 79.95,
-      discountedPrice: 31.00,
-      images: [
-        "https://www.gap.com/webcontent/0055/905/252/cn55905252.jpg",
-        "https://www.gap.com/webcontent/0055/905/270/cn55905270.jpg",
-        "https://www.gap.com/webcontent/0055/905/276/cn55905276.jpg",
-        "https://www.gap.com/webcontent/0055/905/285/cn55905285.jpg"
-      ]
-    },
-    {
-      name: "Lightweight Modern T-Shirt",
-      status: "Really big deal",
-      colors: "4 colors",
-      originalPrice: 34.95,
-      discountedPrice: 13.00,
-      images: [
-        "https://www.gap.com/webcontent/0057/053/744/cn57053744.jpg",
-        "https://www.gap.com/webcontent/0057/053/710/cn57053710.jpg",
-        "https://www.gap.com/webcontent/0057/053/711/cn57053711.jpg",
-        "https://www.gap.com/webcontent/0057/015/245/cn57015245.jpg"
-      ]
-    },
-    {
-      name: "Denim Mini Skort",
-      status: "Really big deal",
-      colors: "2 colors",
-      originalPrice: 59.95,
-      discountedPrice: 17.00,
-      images: [
-        "https://www.gap.com/webcontent/0057/220/125/cn57220125.jpg",
-        "https://www.gap.com/webcontent/0057/219/764/cn57219764.jpg",
-        "https://www.gap.com/webcontent/0057/220/602/cn57220602.jpg",
-        "https://www.gap.com/webcontent/0057/220/616/cn57220616.jpg"
-      ]
-    },
-    {
-      name: "Modern T-Shirt Thong Bodysuit",
-      status: "Extra 50% off at checkout",
-      colors: "2 colors",
-      originalPrice: 44.95,
-      discountedPrice: 34.99,
-      images: [
-        "https://www.gap.com/webcontent/0056/301/497/cn56301497.jpg",
-        "https://www.gap.com/webcontent/0056/299/326/cn56299326.jpg",
-        "https://www.gap.com/webcontent/0056/299/342/cn56299342.jpg",
-        "https://www.gap.com/webcontent/0056/167/900/cn56167900.jpg"
-      ]
-    },
-    {
-      name: "Featherweight Turtleneck",
-      status: "Really big deal",
-      colors: "13 colors",
-      originalPrice: 34.95,
-      discountedPrice: 13.00,
-      images: [
-        "https://www.gap.com/webcontent/0056/708/579/cn56708579.jpg",
-        "https://www.gap.com/webcontent/0056/708/086/cn56708086.jpg",
-        "https://www.gap.com/webcontent/0056/708/092/cn56708092.jpg",
-        "https://www.gap.com/webcontent/0056/722/416/cn56722416.jpg"
-      ]
-    },
-    {
-      name: "Oversized Icon Denim Jacket",
-      status: "Really big deal",
-      colors: "2 colors",
-      originalPrice: 99.95,
-      discountedPrice: 39.00,
-      images: [
-        "https://www.gap.com/webcontent/0055/978/091/cn55978091.jpg",
-        "https://www.gap.com/webcontent/0055/977/982/cn55977982.jpg",
-        "https://www.gap.com/webcontent/0055/977/987/cn55977987.jpg",
-        "https://www.gap.com/webcontent/0055/978/011/cn55978011.jpg"
-      ]
-    },
-    {
-      name: "High Rise Stride Wide-Leg Cargo Jeans",
-      status: "Really big deal",
-      colors: "11 colors",
-      originalPrice: 89.95,
-      discountedPrice: 35.00,
-      images: [
-        "https://www.gap.com/webcontent/0055/151/900/cn55151900.jpg",
-        "https://www.gap.com/webcontent/0055/149/999/cn55149999.jpg",
-        "https://www.gap.com/webcontent/0055/150/057/cn55150057.jpg",
-        "https://www.gap.com/webcontent/0055/150/054/cn55150054.jpg"
-      ]
-    },
-    {
-      name: "Modern Rib Cropped T-Shirt",
-      status: "Really big deal",
-      colors: "15 colors",
-      originalPrice: 29.95,
-      discountedPrice: 11.00,
-      images: [
-        "https://www.gap.com/webcontent/0056/970/628/cn56970628.jpg",
-        "https://www.gap.com/webcontent/0056/970/183/cn56970183.jpg",
-        "https://www.gap.com/webcontent/0056/970/198/cn56970198.jpg",
-        "https://www.gap.com/webcontent/0056/974/432/cn56974432.jpg"
-      ]
+const PopularPicks = [
+  {
+    points: "5X",
+    category: "All dog food, any brand",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU1_HP_FW01_DMA"
+  },
+  {
+    points: "5X",
+    category: "All cat food & treats, any brand",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU2_HP_FW01_DMA"
+  },
+  {
+    points: "5X",
+    category: "All dog treats, any brand",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU3_HP_FW01_DMA"
+  },
+  {
+    points: "5X",
+    category: "Any Salon, PetsHotel, Doggie Day Camp, or Training service",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU4_HP_FW01_DMA"
+  }
+];
+
+const PromotionalOffers = [
+  {
+    offer: "Get 10% in Savings",
+    details: "5X points on products, services, or donations",
+    conditions: "Offer valid through 2/9",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU1_HP_FW01_DMA",
+    description: "Treats Rewards logo and a woman hugging her dog"
+  },
+  {
+    offer: "Earn 5X points",
+    details: "10% back in savings for eligible purchases",
+    conditions: "Products, services, or donations",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU2_HP_FW01_DMA",
+    description: "Treats Rewards logo and a woman hugging her dog"
+  },
+  {
+    offer: "Activate Now",
+    details: "Requires activation to earn rewards and savings",
+    conditions: "Must activate before making purchases",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU3_HP_FW01_DMA",
+    description: "Treats Rewards logo and a woman hugging her dog"
+  }
+];
+
+const PromotionalBanner = {
+  title: "Earn 5X points*",
+  subtitle: "10% back in savings",
+  description: "products, services or donations thru 2/9",
+  buttonText: "Activate now",
+  image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_HCHS_HP_FW01_DT",
+  logo: "https://s7d2.scene7.com/is/image/PetSmart/treats_rewards_logo"
+};
+
+const PetCategories = [
+  {
+    name: "Dog",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT",
+    link: "/dog"
+  },
+  {
+    name: "Cat",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS2_NewPet_DT",
+    link: "/category/cat"
+  },
+  {
+    name: "Fish",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS3_NewPet_DT",
+    link: "/category/fish"
+  },
+  {
+    name: "Bird",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS4_NewPet_DT",
+    link: "/category/birds"
+  },
+  {
+    name: "Reptile",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS5_NewPet_DT",
+    link: "/category/reptiles"
+  },
+  {
+    name: "Small Pet",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS6_NewPet_DT",
+    link: "/category/small-pets"
+  }
+];
+
+const Services = [
+  {
+    name: "Grooming Salon",
+    description: "Valentine's Day Package - Earn 2X points on package thru 2/14",
+    visualElements: "Grooming Salon logo, 2X points callout, dog wearing a Valentine's bandana",
+    expirationDate: "14-Feb",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CS1_HP_FW01_DT",
+    link: "/services/grooming"
+  },
+  {
+    name: "Dog Training",
+    description: "6-wk. Training Classes - Only $129 thru 3/2",
+    visualElements: "Dog Training logo, dog wearing a graduation cap",
+    expirationDate: "2-Mar",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2268408-Jan25_4CS2_HP-FW48_DMA",
+    link: "/services/training"
+  },
+  {
+    name: "PetsHotel",
+    description: "Book a 4-night stay, get the 5th night FREE thru 3/2",
+    visualElements: "PetsHotel logo, dog laying in a dog bed",
+    expirationDate: "2-Mar",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2268408-Jan25_4CS3_HP-FW48_DMA",
+    link: "/services/petshotel"
+  },
+  {
+    name: "Doggie Day Camp",
+    description: "Doggie Day Camp - New campers SAVE 50% on 1st day of play",
+    visualElements: "Doggie Day Camp logo, three dogs playing",
+    expirationDate: "No specific expiration mentioned",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2268408-Jan25_4CS4_HP-FW48_DMA",
+    link: "/services/doggie-day-camp"
+  }
+];
+
+const Deals = [
+  {
+    title: "Save 30% on select dog toys",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/deals-dog-toys",
+    link: "/deals/dog-toys"
+  },
+  {
+    title: "Buy 1, Get 1 50% off cat treats",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/deals-cat-treats",
+    link: "/deals/cat-treats"
+  }
+];
+
+const All: React.FC = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, loginWithPopup } = useAuth0();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
+  const [sortOption, setSortOption] = useState<string>("default");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    console.log("All.tsx is mounted!");
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/petsmart_all_products.json");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    let sortedProducts = [...products];
+
+    if (categoryFilter) {
+      sortedProducts = sortedProducts.filter((p) => p.Category === categoryFilter);
     }
-  ]);
+
+    if (sortOption === "price-low-high") {
+      sortedProducts.sort((a, b) => (a.DiscountedPrice || 0) - (b.DiscountedPrice || 0));
+    } else if (sortOption === "price-high-low") {
+      sortedProducts.sort((a, b) => (b.DiscountedPrice || 0) - (a.DiscountedPrice || 0));
+    }
+
+    setFilteredProducts(sortedProducts);
+  }, [categoryFilter, sortOption, products]);
+
+  if (loading) return <div className="loading-message">Loading pet products...</div>;
+  if (error) return <div className="error-message">Error: {error}</div>;
 
   return (
-    <div className="store-layout">
-      <h1 className="page-title">NEW ARRIVALS</h1>
-      
-      <div className="filter-bar">
-        <button className="filter-btn">
-          <span className="icon">≡</span> All Filters (1)
-        </button>
-        <button className="filter-btn">Department (1)</button>
-        <button className="filter-btn">Category</button>
-        <button className="filter-btn">Size</button>
-        <button className="filter-btn">Color</button>
-        <span className="items-count">{products.length} Items</span>
-        <button className="sort-btn">Sort ▾</button>
+    <div className="home-page">
+      {/* Top Promo Banner */}
+      <div className="top-promo-banner">
+        <a href="#">Get 10% IN SAVINGS (5X pts) on products, services or donations thru 2/9 ›</a>
       </div>
 
-      <div className="active-filters">
-        <span className="filter-tag">
-          Women <button className="remove-filter">×</button>
-        </span>
-      </div>
+      {/* Hero Banner */}
+      <section className="hero-banner">
+        <div className="banner-content">
+          <div className="banner-text">
+            <h1>Earn 5X points*</h1>
+            <h2>10% back in savings</h2>
+            <p>products, services or donations thru 2/9</p>
+            <button className="activate-button">Activate now</button>
+          </div>
+          <img 
+            src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_HCHS_HP_FW01_DT"
+            alt="PetSmart Treats Rewards"
+            className="banner-image"
+          />
+        </div>
+      </section>
 
-      <div className="products-grid">
-        {products.map((product) => (
-          <div
-            key={product.name}
-            className="product-card"
-            onMouseEnter={() => setHoveredProduct(product.name)}
-            onMouseLeave={() => setHoveredProduct(null)}
-          >
-            <div className="product-image">
-              <img
-                src={hoveredProduct === product.name ? product.images[1] : product.images[0]}
-                alt={product.name}
-                className="product-img"
-              />
-              {product.status && (
-                <div className="product-status">
-                  {product.status}
-                </div>
-              )}
-            </div>
-            <div className="product-info">
-              <h3 className="product-name">{product.name}</h3>
-              <p className="product-colors">{product.colors}</p>
-              <div className="product-pricing">
-                <span className="original-price">${product.originalPrice.toFixed(2)}</span>
-                <span className="discounted-price">${product.discountedPrice.toFixed(2)}</span>
+      {/* Popular Picks Section */}
+      <section className="popular-picks">
+        <h2>Popular Categories</h2>
+        <div className="picks-grid">
+          {PopularPicks.map((pick, index) => (
+            <div key={index} className="pick-card">
+              <div className="points-badge">
+                <span className="points">{pick.points}</span>
+                <span className="pts">pts</span>
+              </div>
+              <div className="pick-content">
+                <h3>{pick.category}</h3>
+                <img src={pick.image} alt={pick.category} />
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
+
+      {/* Pet Categories Section */}
+      <section className="pet-categories">
+        <h2>Shop by Pet</h2>
+        <div className="categories-grid">
+          {PetCategories.map((category, index) => (
+            <div 
+              key={index} 
+              className="category-card"
+              onClick={() => {
+                console.log('Navigating to:', category.name === "Dog" ? "/dog" : category.link);
+                if (category.name === "Dog") {
+                  navigate('/dog');
+                } else {
+                  navigate(category.link);
+                }
+              }}
+            >
+              <div className="image-container">
+                <img src={category.image} alt={category.name} />
+              </div>
+              <h3>{category.name}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Products Grid */}
+      <div className="store-layout">
+        <div className="products-grid">
+          {products.map((item, index) => (
+            <div key={index} className="product-card">
+              <img src={item.Image} alt={item.Name} className="product-image" />
+              <div className="product-info">
+                <h3 className="product-name">{item.Name}</h3>
+                <p className="product-price">{item.Price}</p>
+                <button 
+                  className="view-button"
+                  onClick={() => navigate(item.Link)}
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Services Section */}
+      <section className="pet-services">
+        <h2>Our Services</h2>
+        <div className="services-grid">
+          {Services.map((service, index) => (
+            <div 
+              key={index} 
+              className="service-card"
+              onClick={() => navigate(service.link)}
+            >
+              <img src={service.image} alt={service.name} />
+              <div className="service-content">
+                <h3>{service.name}</h3>
+                <p>{service.description}</p>
+                {service.expirationDate && (
+                  <span className="expiration-date">
+                    Expires: {service.expirationDate}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Deals Section */}
+      <section className="deals-section">
+        <h2>Featured Deals</h2>
+        <div className="deals-grid">
+          {Deals.map((deal, index) => (
+            <div 
+              key={index} 
+              className="deal-card"
+              onClick={() => navigate(deal.link)}
+            >
+              <img src={deal.image} alt={deal.title} />
+              <div className="deal-content">
+                <h3>{deal.title}</h3>
+                <button className="shop-now-btn">Shop Now</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="newsletter-signup">
+        <div className="signup-content">
+          <h2>Get Pet Parent News & Offers</h2>
+          <p>Sign up to receive updates, special offers, pet wellness tips and more!</p>
+          <form className="signup-form">
+            <input type="email" placeholder="Enter your email" />
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+      </section>
+
+      {/* Bottom Banner */}
+      <section className="bottom-banner">
+        <div className="banner-content">
+          <div className="banner-text">
+            <h2>Find a PetSmart Store Near You</h2>
+            <p>Shop in store or pick up curbside</p>
+          </div>
+          <button className="find-store-btn">Find a Store</button>
+        </div>
+      </section>
     </div>
   );
-}; 
+};
+
+export default All;

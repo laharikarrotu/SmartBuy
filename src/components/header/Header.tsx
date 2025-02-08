@@ -1,10 +1,13 @@
 import { Link, useLocation } from 'react-router-dom';
 import './header.scss';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useCart } from '../../contexts/CartContext';
 
 export const Header = () => {
   const location = useLocation();
   const { isAuthenticated, loginWithPopup, logout } = useAuth0();
+  const { items } = useCart();
+  const cartItemsCount = items.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <header className="main-header">
@@ -32,7 +35,7 @@ export const Header = () => {
               to="/cart"
               className={location.pathname === '/cart' ? 'active' : ''}
             >
-              Cart
+              Cart {cartItemsCount > 0 && <span className="cart-count">{cartItemsCount}</span>}
             </Link>
           </li>
           {isAuthenticated && (
