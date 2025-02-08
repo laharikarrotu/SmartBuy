@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCart } from '../contexts/CartContext';
-import styles from './Cart.module.scss';
+import './Cart.scss';
 
 interface Product {
   id: string;
@@ -32,7 +32,7 @@ export const Cart: React.FC = () => {
   }
 
   return (
-    <div className={styles['cart-page']}>
+    <div className="cart-page">
       <div className="promo-banner">
         <a href="#">Get 10% IN SAVINGS (5X pts) on products, services or donations thru 2/9* ›</a>
       </div>
