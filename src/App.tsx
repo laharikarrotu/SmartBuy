@@ -80,6 +80,11 @@ function App() {
                     <PersonalizedPage />
                   </ProtectedRoute>
                 } />
+                <Route path="/personalized/product/:id" element={
+                  <ProtectedRoute>
+                    <ProductDetail />
+                  </ProtectedRoute>
+                } />
                 <Route path="/modern-rib-pullover" element={<ModernRibPullover />} />
                 <Route path="/straw-panama-hat" element={<StrawPanamaHat />} />
                 <Route path="/gap-logo-tote" element={<GapLogoTote />} />

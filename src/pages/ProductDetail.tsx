@@ -47,6 +47,7 @@ const ProductDetail: React.FC = () => {
   const { addToCart } = useCart();
   const { isAuthenticated, loginWithPopup } = useAuth0();
   
+  // Get product from location state or find by ID
   const productFromState = location.state?.product;
   const productFromId = productData.find(p => p.id === Number(id));
   const product = productFromState || productFromId;
@@ -55,16 +56,9 @@ const ProductDetail: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [showRewardsPrompt, setShowRewardsPrompt] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
+  const [returnFromAuth, setReturnFromAuth] = useState(false);
 
   const breadcrumbs = ['Dog', 'Food', 'Dry Food'];
-
-  // Reset fade when authentication status changes
-  useEffect(() => {
-    if (isAuthenticated) {
-      setFadeOut(false);
-      setShowRewardsPrompt(false);
-    }
-  }, [isAuthenticated]);
 
   // Redirect if product not found
   useEffect(() => {
@@ -73,15 +67,24 @@ const ProductDetail: React.FC = () => {
     }
   }, [product, navigate]);
 
-  // Handle rewards prompt response
+  // Add effect to handle auth state changes
+  useEffect(() => {
+    if (isAuthenticated && returnFromAuth) {
+      setFadeOut(true);
+      setTimeout(() => {
+        setFadeOut(false);
+        setReturnFromAuth(false);
+      }, 100); // Adjust timing as needed
+    }
+  }, [isAuthenticated, returnFromAuth]);
+
+  // Update the handleRewardsResponse function
   const handleRewardsResponse = async (isRewardsMember: boolean) => {
     setShowRewardsPrompt(false);
     
     if (isRewardsMember) {
-      setFadeOut(true);
+      setReturnFromAuth(true);
       await loginWithPopup();
-    } else {
-      setFadeOut(false);
     }
   };
 

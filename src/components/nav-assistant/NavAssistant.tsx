@@ -42,13 +42,13 @@ const systemInstructionObject = {
     
     - When user mentions 'royal canin' or 'small breed', NAVIGATE to '/product/4' and ONLY say 'Here's the Royal Canin Small Breed Adult Dog Food'
     
-    - When user mentions 'kong toy' or 'dog toy', NAVIGATE to '/product/1' and ONLY say 'Here's the KONG Extreme Dog Toy'
+    - When user mentions 'kong toy' or 'dog toy', NAVIGATE to '/personalized' and ONLY say 'Here's the KONG Extreme Dog Toy'
     
-    - When user mentions 'nylabone' or 'chew toy', NAVIGATE to '/product/2' and ONLY say 'Here's the Nylabone DuraChew Toy'
+    - When user mentions 'nylabone' or 'chew toy', NAVIGATE to '/personalized' and ONLY say 'Here's the Nylabone DuraChew Toy'
     
-    - When user mentions 'tennis ball' or 'fetch toy', NAVIGATE to '/product/3' and ONLY say 'Here's the Tennis Ball Dog Toy'
+    - When user mentions 'tennis ball' or 'fetch toy', NAVIGATE to '/personalized' and ONLY say 'Here's the Tennis Ball Dog Toy'
     
-    - When user mentions 'rope toy' or 'tug toy', NAVIGATE to '/product/4' and ONLY say 'Here's the Rope Tug Dog Toy'
+    - When user mentions 'rope toy' or 'tug toy', NAVIGATE to '/personalized' and ONLY say 'Here's the Rope Tug Dog Toy'
     
     - When rewards prompt appears, ONLY ask 'Are you a rewards member?'
     
@@ -81,6 +81,10 @@ const toolObject: Tool[] = [{
               "/product/3",
               "/product/4",
               "/personalized",
+              "/personalized/product/1",
+              "/personalized/product/2",
+              "/personalized/product/3",
+              "/personalized/product/4",
               "/profile"
             ]
           }

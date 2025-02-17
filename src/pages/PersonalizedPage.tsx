@@ -196,8 +196,8 @@ export default function PersonalizedPage() {
   }, []);
 
   const handleProductClick = (product: Product) => {
-    navigate(`/product/${product.id}`, { 
-      state: { product }
+    navigate(`/personalized/product/${product.id}`, { 
+      state: { product, isPersonalized: true }
     });
   };
 
