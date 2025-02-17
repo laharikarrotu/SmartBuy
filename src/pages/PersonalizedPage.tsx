@@ -196,7 +196,7 @@ export default function PersonalizedPage() {
   }, []);
 
   const handleProductClick = (product: Product) => {
-    navigate(`/personalized/product/${product.id}`, { 
+    navigate(`/personalized/${product.id}`, { 
       state: { product, isPersonalized: true }
     });
   };
@@ -255,6 +255,7 @@ export default function PersonalizedPage() {
           <div 
             key={product.id} 
             className="product-card"
+            data-product-id={product.id}
             onClick={() => handleProductClick(product)}
           >
             <div className="product-image">
@@ -319,6 +320,7 @@ export default function PersonalizedPage() {
                   <div 
                     key={product.id} 
                     className="product-card"
+                    data-product-id={product.id}
                     onClick={() => handleProductClick(product)}
                   >
                     <div className="product-image">

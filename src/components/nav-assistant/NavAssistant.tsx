@@ -42,13 +42,15 @@ const systemInstructionObject = {
     
     - When user mentions 'royal canin' or 'small breed', NAVIGATE to '/product/4' and ONLY say 'Here's the Royal Canin Small Breed Adult Dog Food'
     
-    - When user mentions 'kong toy' or 'dog toy', NAVIGATE to '/personalized' and ONLY say 'Here's the KONG Extreme Dog Toy'
+    - When user mentions 'kong toy' or 'dog toy', NAVIGATE to '/personalized/3' and ONLY say 'Here's the KONG Extreme Dog Toy'
     
-    - When user mentions 'nylabone' or 'chew toy', NAVIGATE to '/personalized' and ONLY say 'Here's the Nylabone DuraChew Toy'
+    - When user mentions 'nylabone' or 'chew toy', NAVIGATE to '/personalized/2' and ONLY say 'Here's the Nylabone DuraChew Toy'
     
-    - When user mentions 'tennis ball' or 'fetch toy', NAVIGATE to '/personalized' and ONLY say 'Here's the Tennis Ball Dog Toy'
+    - When user mentions 'tennis ball' or 'fetch toy', NAVIGATE to '/personalized/3' and ONLY say 'Here's the Tennis Ball Dog Toy'
     
-    - When user mentions 'rope toy' or 'tug toy', NAVIGATE to '/personalized' and ONLY say 'Here's the Rope Tug Dog Toy'
+    - When user mentions 'rope toy' or 'tug toy', NAVIGATE to '/personalized/4' and ONLY say 'Here's the Rope Tug Dog Toy'
+    
+    - When user mentions 'cart' or 'checkout' or 'view cart', NAVIGATE to '/cart' and ONLY say 'Here's your shopping cart'
     
     - When rewards prompt appears, ONLY ask 'Are you a rewards member?'
     
@@ -56,11 +58,11 @@ const systemInstructionObject = {
     
     - When user says 'no' to rewards, CLICK the no button
     
-    - When user is on any product page and says 'add to cart', CLICK add to cart button and ask 'Would you like to check some personalized items just for you?'
+    - When user is on a product page (NOT personalized) and says 'add to cart', CLICK add to cart button and ask 'Would you like to check some personalized items just for Max?'
     
-    - When user says 'yes' to personalized items, NAVIGATE to '/personalized' and say 'Here are some items I picked for you'
+    - When user is on a personalized page and says 'add to cart', ONLY CLICK add to cart button
     
-    - When user says 'add to cart' on personalized page, CLICK add to cart button and ask 'Would you like to see more recommendations?'`
+    - When user says 'yes' to personalized items, NAVIGATE to '/personalized' and say 'Here are some items I picked for Max'`
   }]
 };
 
@@ -81,11 +83,12 @@ const toolObject: Tool[] = [{
               "/product/3",
               "/product/4",
               "/personalized",
-              "/personalized/product/1",
-              "/personalized/product/2",
-              "/personalized/product/3",
-              "/personalized/product/4",
-              "/profile"
+              "/personalized/1",
+              "/personalized/2",
+              "/personalized/3",
+              "/personalized/4",
+              "/profile",
+              "/cart"
             ]
           }
         },
@@ -168,15 +171,31 @@ const NavAssistantComponent = () => {
         switch (fCall.name) {
           case "navigate":
             if (fCall.args?.route) {
-              navigate(fCall.args.route);
+              if (fCall.args.route.startsWith('/personalized/')) {
+                // Extract the product ID
+                const productId = fCall.args.route.split('/').pop();
+                
+                // Find and click the product card
+                const productCard = document.querySelector(
+                  `.product-card[data-product-id="${productId}"]`
+                ) as HTMLElement;
+                
+                if (productCard) {
+                  productCard.click();
+                }
+              } else {
+                navigate(fCall.args.route);
+              }
             }
             break;
 
           case "addToCart":
             const location = window.location.pathname;
-            const addToCartButton = location.includes('/personalized') 
-              ? document.querySelector('.personalized-add-to-cart-btn') as HTMLButtonElement
-              : document.querySelector('.add-to-cart-btn') as HTMLButtonElement;
+            const addToCartButton = document.querySelector(
+              location.includes('/personalized') 
+                ? '.add-to-cart-btn'
+                : '.add-to-cart-btn'
+            ) as HTMLButtonElement;
             
             if (addToCartButton) {
               addToCartButton.click();

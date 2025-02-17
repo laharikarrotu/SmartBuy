@@ -106,7 +106,7 @@ const ProductDetail: React.FC = () => {
           });
           document.dispatchEvent(promptShowEvent);
         }, 300);
-      }, 3000);
+      }, 5000);
 
       return () => {
         clearTimeout(timer);

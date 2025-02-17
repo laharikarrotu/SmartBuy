@@ -38,6 +38,7 @@ import ModernRibPullover from './pages/ModernRibPullover';
 import StrawPanamaHat from './pages/StrawPanamaHat';
 import GapLogoTote from './pages/GapLogoTote';
 import ProductDetail from "./pages/ProductDetail";
+import PersonalizedProductDetail from './pages/PersonalizedProductDetail';
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -80,14 +81,11 @@ function App() {
                     <PersonalizedPage />
                   </ProtectedRoute>
                 } />
-                <Route path="/personalized/product/:id" element={
-                  <ProtectedRoute>
-                    <ProductDetail />
-                  </ProtectedRoute>
-                } />
+                <Route path="/personalized-items/:id" element={<PersonalizedPage />} />
                 <Route path="/modern-rib-pullover" element={<ModernRibPullover />} />
                 <Route path="/straw-panama-hat" element={<StrawPanamaHat />} />
                 <Route path="/gap-logo-tote" element={<GapLogoTote />} />
+                <Route path="/personalized/:id" element={<PersonalizedProductDetail />} />
               </Routes>
               <div className="video-container">
                 <video ref={videoRef} autoPlay muted playsInline />
