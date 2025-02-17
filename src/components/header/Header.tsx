@@ -23,13 +23,12 @@ export const Header = () => {
           </li>
           <li>
             <Link 
-              to="/women-casual-jeans"
-              className={location.pathname === '/women-casual-jeans' ? 'active' : ''}
+              to="/dog"
+              className={location.pathname === '/dog' ? 'active' : ''}
             >
-              Women Casual Jeans
+              Dog
             </Link>
           </li>
-
           <li>
             <Link 
               to="/cart"

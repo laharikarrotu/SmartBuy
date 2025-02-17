@@ -93,6 +93,8 @@ const Dog: React.FC = () => {
   return (
     <div className="dog-page">
       <h1>Dog Products & Supplies</h1>
+
+      
       <div className="deals-section">
         <div className="deals-header">
           <h2>All dog deals</h2>
@@ -110,21 +112,9 @@ const Dog: React.FC = () => {
         </div>
       </div>
 
-      <div className="hero-banner">
-        <img 
-          src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2679600-Jan25_dPCS_CONs_DT" 
-          alt="Dog Food Promotion"
-        />
-        <div className="promo-content">
-          <h1>Dog Shop</h1>
-          <h2>Food, treats, supplies, toys & more</h2>
-          <div className="offer-banner">
-            <h3>$10 back in savings</h3>
-            <p>EARN 5,000 pts ($10 back in savings) when you spend $60+ on all dog food PER DAY thru 3/2*</p>
-            <button className="activate-btn">Activate</button>
-          </div>
-        </div>
-      </div>
+      <br />
+      <br />
+
 
       <div className="products-section">
         <div className="products-grid">
@@ -158,6 +148,32 @@ const Dog: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      
+
+      <div className="hero-banner">
+        <img 
+          src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2679600-Jan25_dPCS_CONs_DT" 
+          alt="Dog Food Promotion"
+        />
+        <div className="promo-content">
+          <h1>Dog Shop</h1>
+          <h2>Food, treats, supplies, toys & more</h2>
+          <div className="offer-banner">
+            <h3>$10 back in savings</h3>
+            <p>EARN 5,000 pts ($10 back in savings) when you spend $60+ on all dog food PER DAY thru 3/2*</p>
+            <button className="activate-btn">Activate</button>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   );
 };

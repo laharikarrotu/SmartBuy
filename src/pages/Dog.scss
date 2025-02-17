@@ -1,7 +1,10 @@
 .dog-page {
-  max-width: 1440px;
+  max-width: 1200px;
+  padding: 24px 16px;
   margin: 0 auto;
-  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
   h1 {
     font-size: 2.5rem;
@@ -10,13 +13,15 @@
   }
 
   .deals-section {
-    margin-bottom: 60px;
+    margin: 0 auto 40px;
+    width: 100%;
+    overflow: visible;
 
     .deals-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
 
       h2 {
         font-size: 2rem;
@@ -34,64 +39,59 @@
 
     .deals-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 30px;
-      padding: 0 20px;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 16px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
 
       .deal-card {
         text-align: center;
-        cursor: pointer;
-
+        
         .deal-circle {
-          width: 180px;
-          height: 180px;
+          width: min(100px, 100%);
+          height: min(100px, 100%);
           background: #e31837;
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 15px;
-          transition: transform 0.2s;
-          
-          &:hover {
-            transform: scale(1.05);
-          }
+          margin: 0 auto 8px;
           
           .deal-text {
             color: white;
             font-weight: bold;
-            font-size: 1.5rem;
-            white-space: pre-line;
-            text-align: center;
-            padding: 10px;
+            font-size: 0.9rem;
+            padding: 4px;
+            line-height: 1.2;
           }
         }
 
         .deal-label {
+          font-size: 0.875rem;
           display: block;
-          font-size: 1.1rem;
-          color: #333;
-          margin-top: 10px;
+          margin-top: 8px;
         }
       }
     }
   }
 
   .hero-banner {
-    position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    width: 100%;
+    overflow: hidden;
 
     img {
       width: 100%;
       height: auto;
+      object-fit: cover;
     }
 
     .promo-content {
-      position: absolute;
-      top: 50%;
-      left: 50px;
-      transform: translateY(-50%);
-      color: white;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
 
       h1 {
         font-size: 3rem;
@@ -105,43 +105,89 @@
       }
 
       .offer-banner {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 20px;
-        border-radius: 8px;
+        background: linear-gradient(to right, #ffffff, #f8f9fa);
+        border: 2px solid #e31837;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
 
         h3 {
           color: #e31837;
-          margin-bottom: 10px;
+          font-size: 1.4rem;
+          font-weight: 600;
+          margin-bottom: 12px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          &:before {
+            content: "🏷️";
+            font-size: 1.2rem;
+          }
         }
 
         p {
-          margin-bottom: 15px;
+          color: #333;
+          font-size: 1.1rem;
+          line-height: 1.4;
+          margin-bottom: 20px;
         }
 
         .activate-btn {
           background: #e31837;
           color: white;
           border: none;
-          padding: 10px 20px;
-          border-radius: 4px;
+          padding: 12px 28px;
+          border-radius: 6px;
+          font-size: 1rem;
+          font-weight: 600;
           cursor: pointer;
+          transition: all 0.2s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          box-shadow: 0 2px 8px rgba(227, 24, 55, 0.2);
 
           &:hover {
-            background: darken(#e31837, 10%);
+            background: darken(#e31837, 5%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(227, 24, 55, 0.3);
           }
+
+          &:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(227, 24, 55, 0.2);
+          }
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 150px;
+          height: 150px;
+          background: linear-gradient(45deg, transparent, rgba(227, 24, 55, 0.05));
+          border-radius: 50%;
+          transform: translate(50%, -50%);
         }
       }
     }
   }
 
   .products-section {
-    margin-top: 60px;
+    margin: 40px auto 0;
+    width: 100%;
+    overflow-x: hidden;
 
     .products-grid {
+      margin: 0 auto;
+      width: 100%;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-      padding: 0 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      box-sizing: border-box;
 
       .product-card {
         border: 1px solid #eee;
@@ -160,7 +206,7 @@
           
           img {
             width: 100%;
-            height: 250px;
+            height: clamp(150px, 25vw, 200px);
             object-fit: contain;
           }
         }
@@ -223,31 +269,91 @@
 @media (max-width: 1200px) {
   .dog-page {
     .deals-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .products-grid {
-      grid-template-columns: repeat(3, 1fr);
+      .deal-card .deal-circle {
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 }
 
 @media (max-width: 768px) {
   .dog-page {
+    padding: 16px 12px;
+    
     .deals-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      
+      .deal-card .deal-circle {
+        width: 90px;
+        height: 90px;
+      }
     }
     
     .products-grid {
-      grid-template-columns: repeat(2, 1fr);
+      .product-card {
+        .product-image img {
+          height: clamp(120px, 20vw, 150px);
+        }
+        
+        .product-info {
+          h3 {
+            font-size: 0.9rem;
+          }
+          
+          .price {
+            font-size: 1.1rem;
+          }
+          
+          .view-details {
+            padding: 8px;
+            font-size: 0.9rem;
+          }
+        }
+      }
     }
 
     .hero-banner .promo-content {
-      position: relative;
+      width: 100%;
       left: 0;
-      transform: none;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .hero-banner {
+      .promo-content {
+        .offer-banner {
+          padding: 20px;
+
+          h3 {
+            font-size: 1.2rem;
+          }
+
+          p {
+            font-size: 1rem;
+          }
+
+          .activate-btn {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dog-page {
+    padding: 12px 8px;
+    
+    .deals-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .products-grid {
+      grid-template-columns: 1fr;
     }
   }
 } 

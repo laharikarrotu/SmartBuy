@@ -24,7 +24,6 @@ import ControlTray from "./components/control-tray/ControlTray";
 import cn from "classnames";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/header/Header';
-import { WomenCasualJeans } from './pages/WomenCasualJeans';
 import { NavAssistant } from './components/nav-assistant/NavAssistant';
 import { BabyBootJean } from './pages/BabyBootJean';
 import { Cart } from './pages/Cart';
@@ -68,7 +67,6 @@ function App() {
                 <Route path="/all" element={<All />} />
                 <Route path="/dog" element={<Dog />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/women-casual-jeans" element={<WomenCasualJeans />} />
                 <Route path="/baby-boot-jean" element={<BabyBootJean />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/order-payment-confirmation" element={<OrderPaymentConfirmation />} />

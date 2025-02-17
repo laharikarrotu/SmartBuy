@@ -836,39 +836,49 @@ body {
     .pick-card {
       position: relative;
       background: white;
-      border-radius: 8px;
-      overflow: hidden;
+      border-radius: 12px;
+      overflow: visible;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
 
       .points-badge {
         position: absolute;
-        top: 10px;
+        top: -10px;
         left: 10px;
         background: #e31837;
         color: white;
-        padding: 5px 10px;
-        border-radius: 4px;
-        z-index: 1;
+        padding: 4px 12px;
+        border-radius: 20px;
+        z-index: 2;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 
         .points {
-          font-weight: bold;
-          margin-right: 4px;
+          font-weight: 600;
+          font-size: 1rem;
+          margin-right: 2px;
+        }
+
+        .pts {
+          font-size: 0.9rem;
         }
       }
 
       .pick-content {
-        padding: 15px;
+        margin-top: 15px;
 
         h3 {
           margin-bottom: 15px;
           font-size: 1.1rem;
+          line-height: 1.4;
+          color: #333;
         }
 
         img {
           width: 100%;
-          height: 200px;
-          object-fit: cover;
-          border-radius: 4px;
+          height: 180px;
+          object-fit: contain;
+          border-radius: 8px;
+          background: #f8f9fa;
         }
       }
     }
@@ -1122,6 +1132,12 @@ body {
         }
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .popular-picks .picks-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

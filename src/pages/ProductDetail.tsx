@@ -89,19 +89,6 @@ const ProductDetail: React.FC = () => {
               </div>
             </div>
 
-            <div className="promotions">
-              <div className="promo-item">
-                <span className="icon">🏷️</span>
-                <span>5X points (10% back in savings) on merchandise, services, & donations.</span>
-                <a href="#">Details</a>
-              </div>
-              <div className="promo-item">
-                <span className="icon">💰</span>
-                <span>EARN 5,000 points ($10 in future savings) when you spend $60+ on any dog food!</span>
-                <a href="#">Details</a>
-              </div>
-            </div>
-
             <div className="pickup-section">
               <h3>Pick up in store</h3>
               <p>Most orders ready within 2 hours</p>
@@ -124,13 +111,55 @@ const ProductDetail: React.FC = () => {
                 Estimated {quantity * 599} points earned
               </div>
 
-              <button className="add-to-cart-btn" onClick={() => addToCart({...product, quantity})}>
-                Add to cart
-              </button>
-
-              <button className="delivery-btn">Same-day delivery</button>
-              <button className="autoship-btn">Autoship & Save 35%</button>
             </div>
+          </div>
+
+          <div className="button-group">
+            <button 
+              className="add-to-cart-btn" 
+              onClick={() => addToCart({...product, quantity})}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                width: '100%',
+                padding: '14px 28px',
+                background: '#0055a6',
+                color: 'white',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '1.1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 2px 8px rgba(0, 85, 166, 0.25)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                const btn = e.currentTarget;
+                btn.style.background = '#004485';
+                btn.style.boxShadow = '0 4px 12px rgba(0, 85, 166, 0.35)';
+                btn.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={(e) => {
+                const btn = e.currentTarget;
+                btn.style.background = '#0055a6';
+                btn.style.boxShadow = '0 2px 8px rgba(0, 85, 166, 0.25)';
+                btn.style.transform = 'translateY(0)';
+              }}
+              onMouseDown={(e) => {
+                const btn = e.currentTarget;
+                btn.style.transform = 'translateY(1px)';
+                btn.style.boxShadow = '0 2px 6px rgba(0, 85, 166, 0.2)';
+              }}
+            >
+              <span style={{ fontSize: '1.2rem' }}>🛒</span>
+              <span>Add to cart</span>
+            </button>
           </div>
         </div>
       </div>

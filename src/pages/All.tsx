@@ -310,25 +310,7 @@ const All: React.FC = () => {
         </div>
       </section>
 
-      {/* Deals Section */}
-      <section className="deals-section">
-        <h2>Featured Deals</h2>
-        <div className="deals-grid">
-          {Deals.map((deal, index) => (
-            <div 
-              key={index} 
-              className="deal-card"
-              onClick={() => navigate(deal.link)}
-            >
-              <img src={deal.image} alt={deal.title} />
-              <div className="deal-content">
-                <h3>{deal.title}</h3>
-                <button className="shop-now-btn">Shop Now</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       {/* Newsletter Signup */}
       <section className="newsletter-signup">
