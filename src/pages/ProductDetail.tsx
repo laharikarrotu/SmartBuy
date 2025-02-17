@@ -1,21 +1,77 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useAuth0 } from '@auth0/auth0-react';
 import './ProductDetail.scss';
 
+// Define the product data structure
+const productData = [
+  {
+    id: 1,
+    name: "Purina Pro Plan Sensitive Skin & Stomach Adult Dry Dog Food",
+    sizes: "4 sizes",
+    reviews: 2693,
+    price: 89.99,
+    image: "https://s7d2.scene7.com/is/image/PetSmart/5339575?$sclp-prd-main_large$"
+  },
+  {
+    id: 2,
+    name: "Hill's® Science Diet® Sensitive Stomach & Skin Adult Dry Dog Food",
+    sizes: "4 sizes",
+    reviews: 768,
+    price: 83.99,
+    image: "https://s7d2.scene7.com/is/image/PetSmart/5154856?$sclp-prd-main_large$"
+  },
+  {
+    id: 3,
+    name: "Blue Buffalo® Life Protection Formula™ Adult Dry Dog Food",
+    sizes: "5 sizes",
+    reviews: 937,
+    price: 64.99,
+    image: "https://s7d2.scene7.com/is/image/PetSmart/5066968?$sclp-prd-main_large$"
+  },
+  {
+    id: 4,
+    name: "Royal Canin Size Health Nutrition Small Breed Adult Dry Dog Food",
+    sizes: "2 sizes",
+    reviews: 760,
+    price: 59.99,
+    image: "https://s7d2.scene7.com/is/image/PetSmart/5173207?$sclp-prd-main_large$"
+  }
+];
+
 const ProductDetail: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { id } = useParams();
   const { addToCart } = useCart();
   const { isAuthenticated, loginWithPopup } = useAuth0();
-  const { product } = location.state || {};
+  
+  const productFromState = location.state?.product;
+  const productFromId = productData.find(p => p.id === Number(id));
+  const product = productFromState || productFromId;
+  
   const [selectedSize, setSelectedSize] = useState('34 Lb');
   const [quantity, setQuantity] = useState(1);
   const [showRewardsPrompt, setShowRewardsPrompt] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
   const breadcrumbs = ['Dog', 'Food', 'Dry Food'];
+
+  // Reset fade when authentication status changes
+  useEffect(() => {
+    if (isAuthenticated) {
+      setFadeOut(false);
+      setShowRewardsPrompt(false);
+    }
+  }, [isAuthenticated]);
+
+  // Redirect if product not found
+  useEffect(() => {
+    if (!product) {
+      navigate('/dog');
+    }
+  }, [product, navigate]);
 
   // Handle rewards prompt response
   const handleRewardsResponse = async (isRewardsMember: boolean) => {
@@ -57,11 +113,12 @@ const ProductDetail: React.FC = () => {
         });
         document.dispatchEvent(cleanupEvent);
       };
-    } else {
-      setFadeOut(false);
-      setShowRewardsPrompt(false);
     }
   }, [isAuthenticated]);
+
+  if (!product) {
+    return null; // or a loading spinner
+  }
 
   return (
     <div className="product-detail-page">
