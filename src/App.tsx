@@ -33,7 +33,7 @@ import All from './pages/All';
 import Dog from './pages/Dog';
 import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
 import { ProtectedRoute } from './auth/ProtectedRoute';
-import { PersonalizedPage } from './pages/PersonalizedPage';
+import PersonalizedPage from './pages/PersonalizedPage';
 import ModernRibPullover from './pages/ModernRibPullover';
 import StrawPanamaHat from './pages/StrawPanamaHat';
 import GapLogoTote from './pages/GapLogoTote';

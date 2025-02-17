@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import './Cart.scss';
 
 interface Product {
@@ -12,8 +13,20 @@ interface Product {
   price: number;
 }
 
+interface CartItem {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice: number;
+  color: string;
+  size: string;
+  fit: string;
+  quantity: number;
+  image: string;
+}
+
 export const Cart: React.FC = () => {
-  const { items, removeFromCart, updateQuantity } = useCart();
+  const { items, removeFromCart, updateQuantity, setItems } = useCart();
   const navigate = useNavigate();
   const [isAddressComplete, setIsAddressComplete] = useState(false);
   const [selectedShipping, setSelectedShipping] = useState<string>('');
@@ -34,6 +47,9 @@ export const Cart: React.FC = () => {
     zipCode: '',
     phone: ''
   });
+  const { isAuthenticated, user } = useAuth0();
+  const [paymentLink, setPaymentLink] = useState('');
+  const [showRewardsDiscount, setShowRewardsDiscount] = useState(false);
 
   const shippingOptions = [
     { method: 'Same-Day Delivery', cost: 9.99, time: 'Today' },
@@ -80,36 +96,166 @@ export const Cart: React.FC = () => {
   const handleSendCode = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    
     try {
-      if (!phoneNumber) throw new Error('Please enter a phone number');
+      if (!phoneNumber) throw new Error('Please enter phone number');
+      
+      // Simulate sending code
       await new Promise(resolve => setTimeout(resolve, 1000));
       setIsCodeSent(true);
-      setError('Verification code sent!');
+      
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : 'Failed to send code');
     }
   };
 
   const handleVerifyCode = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    
     try {
       if (!verificationCode) throw new Error('Please enter verification code');
+      
+      // Simulate verification
       await new Promise(resolve => setTimeout(resolve, 1000));
       setIsVerified(true);
+      setError('');
+      
+      // Show rewards animation
+      setShowRewardsDiscount(true);
+      setTimeout(() => {
+        setShowRewardsDiscount(false);
+      }, 1000);
+      
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Invalid verification code');
     }
   };
 
+  const sendPaymentLink = async () => {
+    setError('');
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const fakePaymentLink = `https://payment.petsmart.com/${Math.random().toString(36).substring(7)}`;
+      setPaymentLink(fakePaymentLink);
+      setError('Payment link has been sent to your phone. Click the link below to complete payment.');
+    } catch (err) {
+      setError('Failed to send payment link. Please try again.');
+    }
+  };
+
   const handlePaymentCompletion = async () => {
     try {
+      // Save order details
+      const orderDetails = {
+        cartItems: items,
+        shippingAddress,
+        selectedShipping,
+        total
+      };
+      localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+      
+      // Simulate payment processing
       await new Promise(resolve => setTimeout(resolve, 1500));
       setIsPaymentComplete(true);
+      
+      // Redirect to confirmation
       setTimeout(() => {
-        navigate('/order-confirmation');
+        navigate('/order-payment-confirmation');
       }, 2000);
     } catch (err) {
       setError('Payment failed. Please try again.');
+    }
+  };
+
+  // Pre-saved data for authenticated users
+  const savedUserData = {
+    shippingAddress: {
+      fullName: 'Venu Alla',
+      street: '525 Lakehill Way',
+      apt: '525',
+      city: 'Alpharetta',
+      state: 'GA',
+      zipCode: '30022',
+      phone: '+16172012157'
+    },
+    shipping: 'Standard Shipping'
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // Set shipping address and other data
+      setShippingAddress(savedUserData.shippingAddress);
+      setSelectedShipping(savedUserData.shipping);
+      
+      // Automatically set verification status for authenticated users
+      setPhoneNumber(savedUserData.shippingAddress.phone);
+      setIsVerified(true); // Auto-verify authenticated users
+      setIsAddressComplete(true);
+    }
+  }, [isAuthenticated]);
+
+  // Load cart items from localStorage on component mount
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cartItems');
+    if (savedCart) {
+      try {
+        const parsedCart = JSON.parse(savedCart);
+        // Check if the saved cart is not expired
+        if (parsedCart.expiry && new Date().getTime() < parsedCart.expiry) {
+          setItems(parsedCart.items);
+        } else {
+          // Clear expired cart
+          localStorage.removeItem('cartItems');
+        }
+      } catch (error) {
+        console.error('Error loading cart:', error);
+      }
+    }
+  }, [setItems]);
+
+  // Save cart items to localStorage whenever they change
+  useEffect(() => {
+    if (items.length > 0) {
+      const cartData = {
+        items: items,
+        expiry: new Date().getTime() + (24 * 60 * 60 * 1000) // 24 hours expiry
+      };
+      localStorage.setItem('cartItems', JSON.stringify(cartData));
+    }
+  }, [items]);
+
+  // Handle remove item
+  const handleRemoveItem = (itemId: string) => {
+    try {
+      removeFromCart(itemId);
+      // Update localStorage after removal
+      const updatedCart = items.filter(item => item.id !== itemId);
+      const cartData = {
+        items: updatedCart,
+        expiry: new Date().getTime() + (24 * 60 * 60 * 1000)
+      };
+      localStorage.setItem('cartItems', JSON.stringify(cartData));
+    } catch (error) {
+      console.error('Error removing item:', error);
+    }
+  };
+
+  // Handle quantity update
+  const handleQuantityChange = (itemId: string, newQuantity: number) => {
+    try {
+      updateQuantity(itemId, newQuantity);
+      // Update localStorage after quantity change
+      const updatedCart = items.map(item => 
+        item.id === itemId ? { ...item, quantity: newQuantity } : item
+      );
+      const cartData = {
+        items: updatedCart,
+        expiry: new Date().getTime() + (24 * 60 * 60 * 1000)
+      };
+      localStorage.setItem('cartItems', JSON.stringify(cartData));
+    } catch (error) {
+      console.error('Error updating quantity:', error);
     }
   };
 
@@ -143,7 +289,7 @@ export const Cart: React.FC = () => {
                   <td>
                     <select
                       value={item.quantity}
-                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                      onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
                     >
                       {[1,2,3,4,5,6,7,8,9,10].map(num => (
                         <option key={num} value={num}>{num}</option>
@@ -154,7 +300,7 @@ export const Cart: React.FC = () => {
                     ${(item.price * item.quantity).toFixed(2)}
                     <button 
                       className="remove-btn"
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => handleRemoveItem(item.id)}
                     >
                       Remove
                     </button>
@@ -269,7 +415,7 @@ export const Cart: React.FC = () => {
                   <p>{shippingAddress.street} {shippingAddress.apt}</p>
                   <p>{shippingAddress.city}, {shippingAddress.state} {shippingAddress.zipCode}</p>
                   <p>{shippingAddress.phone}</p>
-                  <button className="edit-address-btn" onClick={handleEditAddress}>
+                  <button className="edit-address-btn" onClick={() => setIsAddressComplete(false)}>
                     Edit
                   </button>
                 </div>
@@ -312,7 +458,7 @@ export const Cart: React.FC = () => {
           </div>
         </div>
 
-        <div className={`order-summary ${isAddressComplete ? 'active' : ''}`}>
+        <div className="order-summary">
           <h2>Order Summary</h2>
           <div className="summary-details">
             <div className="summary-row">
@@ -341,14 +487,6 @@ export const Cart: React.FC = () => {
             <p>Earn {Math.floor(total * 10)} points on this purchase</p>
           </div>
 
-          <div className="promo-code">
-            <h3>Add a Promo Code</h3>
-            <div className="promo-input">
-              <input type="text" placeholder="Enter Promo Code" />
-              <button>Apply</button>
-            </div>
-          </div>
-
           <div className="charity-donation">
             <h3>PetSmart Charities® Donation</h3>
             <p>Earn 2X points on every donation. Your donation helps pets in need & all while you shop.</p>
@@ -356,6 +494,57 @@ export const Cart: React.FC = () => {
               <input type="number" defaultValue={1} min={1} />
               <button>Apply</button>
             </div>
+          </div>
+
+          <div className="quick-pay-section">
+            <h3>Quick Pay</h3>
+            {isAuthenticated ? (
+              <div className="payment-section">
+                {!isPaymentComplete ? (
+                  <div className="payment-content">
+                    <button 
+                      onClick={handlePaymentCompletion}
+                      className="wallet-pay-btn"
+                    >
+                      Complete Payment with Wallet
+                    </button>
+                  </div>
+                ) : (
+                  <div className="payment-success">
+                    <span className="success-tick">✓</span>
+                    <p>Payment Successful!</p>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="signin-section">
+                {error && <div className="error">{error}</div>}
+                <form onSubmit={handleSendCode}>
+                  <div className="phone-input-row">
+                    <input
+                      type="tel"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      placeholder="Enter phone number"
+                    />
+                    <button type="submit">Send Code</button>
+                  </div>
+                </form>
+                {isCodeSent && (
+                  <form onSubmit={handleVerifyCode}>
+                    <div className="verification-code-row">
+                      <input
+                        type="text"
+                        value={verificationCode}
+                        onChange={(e) => setVerificationCode(e.target.value)}
+                        placeholder="Enter verification code"
+                      />
+                      <button type="submit">Verify</button>
+                    </div>
+                  </form>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

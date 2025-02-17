@@ -1,20 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import { useAuth0 } from '@auth0/auth0-react';
 import './ProductDetail.scss';
 
 const ProductDetail: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const { isAuthenticated, loginWithPopup } = useAuth0();
   const { product } = location.state || {};
   const [selectedSize, setSelectedSize] = useState('34 Lb');
   const [quantity, setQuantity] = useState(1);
+  const [showRewardsPrompt, setShowRewardsPrompt] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
 
   const breadcrumbs = ['Dog', 'Food', 'Dry Food'];
 
+  // Handle rewards prompt response
+  const handleRewardsResponse = async (isRewardsMember: boolean) => {
+    setShowRewardsPrompt(false);
+    
+    if (isRewardsMember) {
+      setFadeOut(true);
+      await loginWithPopup();
+    } else {
+      setFadeOut(false);
+    }
+  };
+
+  // Show rewards prompt after delay
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const timer = setTimeout(() => {
+        setFadeOut(true);
+        
+        const fadeStartEvent = new CustomEvent('rewardsPromptFade', {
+          detail: { action: 'start' }
+        });
+        document.dispatchEvent(fadeStartEvent);
+        
+        setTimeout(() => {
+          setShowRewardsPrompt(true);
+          const promptShowEvent = new CustomEvent('rewardsPromptShow', {
+            detail: { visible: true }
+          });
+          document.dispatchEvent(promptShowEvent);
+        }, 300);
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+        setShowRewardsPrompt(false);
+        const cleanupEvent = new CustomEvent('rewardsPromptShow', {
+          detail: { visible: false }
+        });
+        document.dispatchEvent(cleanupEvent);
+      };
+    } else {
+      setFadeOut(false);
+      setShowRewardsPrompt(false);
+    }
+  }, [isAuthenticated]);
+
   return (
     <div className="product-detail-page">
+      {showRewardsPrompt && (
+        <div className="rewards-prompt-overlay">
+          <div className="rewards-prompt">
+            <h2>Are you a rewards member?</h2>
+            <div className="rewards-buttons">
+              <button onClick={() => handleRewardsResponse(true)}>Yes</button>
+              <button onClick={() => handleRewardsResponse(false)}>No</button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Top Promo Banner */}
       <div className="promo-banner">
         <a href="#">Get 10% IN SAVINGS (5X pts) on products, services or donations thru 2/9* ›</a>
@@ -30,7 +91,7 @@ const ProductDetail: React.FC = () => {
         ))}
       </div>
 
-      <div className="product-container">
+      <div className={`product-container ${fadeOut ? 'fade-out' : ''}`}>
         {/* Left Column - Images */}
         <div className="product-images">
           <div className="main-image">

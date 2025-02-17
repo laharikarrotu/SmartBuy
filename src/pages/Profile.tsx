@@ -39,36 +39,36 @@ export const Profile = () => {
   const [chatHistories, setChatHistories] = useState<ChatHistory[]>([
     {
       id: 'chat-1',
-      title: 'Looking for jeans recommendations...',
+      title: 'Dog food recommendations...',
       createdAt: new Date('2024-03-15T10:30:00'),
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you find the perfect products for your pet today?',
           timestamp: new Date('2024-03-15T10:30:00'),
           id: 'initial-1'
         },
         {
           role: 'user',
-          content: 'I\'m looking for some comfortable jeans for everyday wear',
+          content: 'I need recommendations for dog food. My golden retriever is 2 years old and has a sensitive stomach.',
           timestamp: new Date('2024-03-15T10:31:00'),
           id: 'user-1'
         },
         {
           role: 'assistant',
-          content: 'I\'d recommend our Mid Rise Baby Boot Jeans! They\'re very popular for everyday wear and currently 50% off. Would you like to see them?',
+          content: 'I\'d recommend Hill\'s Science Diet Sensitive Stomach & Skin Adult Dog Food. It\'s specially formulated for digestive health and currently 20% off with Treats™ membership. Would you like to see the details?',
           timestamp: new Date('2024-03-15T10:31:30'),
           id: 'assistant-1'
         },
         {
           role: 'user',
-          content: 'Yes, that sounds perfect!',
+          content: 'Yes, that sounds perfect! What size bags are available?',
           timestamp: new Date('2024-03-15T10:32:00'),
           id: 'user-2'
         },
         {
           role: 'assistant',
-          content: 'Great choice! I\'ve added them to your cart in size 29 Tall. Would you like to see some personalized recommendations to go with them?',
+          content: 'It comes in 15lb and 30lb bags. The 30lb bag is the better value at $64.99, plus you\'ll earn 650 Treats™ points. Would you like me to add it to your cart? I can also suggest some digestive supplements that pair well with this food.',
           timestamp: new Date('2024-03-15T10:32:30'),
           id: 'assistant-2'
         }
@@ -76,36 +76,36 @@ export const Profile = () => {
     },
     {
       id: 'chat-2',
-      title: 'Help with shipping options...',
+      title: 'Help with grooming services...',
       createdAt: new Date('2024-03-14T15:20:00'),
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-14T15:20:00'),
           id: 'initial-2'
         },
         {
           role: 'user',
-          content: 'What are the shipping options for my order?',
+          content: 'I need to schedule a grooming appointment for my Shih Tzu. What services do you offer?',
           timestamp: new Date('2024-03-14T15:21:00'),
           id: 'user-3'
         },
         {
           role: 'assistant',
-          content: 'We offer free fast shipping on orders over $50 for Rewards Members! Standard delivery takes 3-5 days, and express shipping is available for 1-2 day delivery. Would you like to become a Rewards Member to get free shipping?',
+          content: 'We offer full-service grooming including bath, haircut, nail trim, and ear cleaning. For Shih Tzus, we recommend our Breed-Specific Package which includes special attention to face and paw trimming. First-time clients get 20% off! Would you like to see available appointments?',
           timestamp: new Date('2024-03-14T15:21:30'),
           id: 'assistant-3'
         },
         {
           role: 'user',
-          content: 'Yes, how do I join the rewards program?',
+          content: 'Yes, what\'s available next weekend?',
           timestamp: new Date('2024-03-14T15:22:00'),
           id: 'user-4'
         },
         {
           role: 'assistant',
-          content: 'I\'ll help you sign up right away! You\'ll get immediate access to free shipping, exclusive discounts, and personalized recommendations.',
+          content: 'I see openings on Saturday at 10am and 2pm, or Sunday at 11am. Each appointment is about 2-3 hours. Would you like me to book one of these times? All new clients also receive a free Teeth Brushing service ($15 value).',
           timestamp: new Date('2024-03-14T15:22:30'),
           id: 'assistant-4'
         }
@@ -113,36 +113,36 @@ export const Profile = () => {
     },
     {
       id: 'chat-3',
-      title: 'Looking for a new tote bag...',
+      title: 'Looking for training classes...',
       createdAt: new Date('2024-03-13T09:15:00'),
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-13T09:15:00'),
           id: 'initial-3'
         },
         {
           role: 'user',
-          content: 'Do you have any good tote bags for everyday use?',
+          content: 'What puppy training classes do you offer? I have a 4-month-old Lab.',
           timestamp: new Date('2024-03-13T09:16:00'),
           id: 'user-5'
         },
         {
           role: 'assistant',
-          content: 'Yes! Our Gap Logo Tote is perfect for everyday use. It\'s spacious, durable, and comes in classic colors. Would you like to see it?',
+          content: 'Our Puppy Training package includes 6 weeks of classes covering basic commands, socialization, and house training. Classes are small groups of 6-8 puppies. The next session starts this Tuesday at 6pm. Would you like more details?',
           timestamp: new Date('2024-03-13T09:16:30'),
           id: 'assistant-5'
         },
         {
           role: 'user',
-          content: 'What are the dimensions of the tote?',
+          content: 'What\'s included in the package and how much does it cost?',
           timestamp: new Date('2024-03-13T09:17:00'),
           id: 'user-6'
         },
         {
           role: 'assistant',
-          content: 'The Gap Logo Tote measures 14" x 16" x 6", perfect for carrying essentials like a laptop, water bottle, and more. It also has interior pockets for organization. Would you like to see it in different colors?',
+          content: 'The package is $129 and includes all 6 classes, a training clicker, treat pouch, and training guide. Treats™ members save 10% and earn double points. You\'ll also get 15% off any training supplies purchased during the course. Would you like to enroll?',
           timestamp: new Date('2024-03-13T09:17:30'),
           id: 'assistant-6'
         }
@@ -150,123 +150,75 @@ export const Profile = () => {
     },
     {
       id: 'chat-4',
-      title: 'Looking for running shoes...',
+      title: 'Help with flea treatment...',
       createdAt: new Date('2024-03-12T14:25:00'),
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-12T14:25:00'),
           id: 'initial-4'
         },
         {
           role: 'user',
-          content: 'I need new running shoes for marathon training. I have high arches and usually run about 30 miles per week.',
+          content: 'I need flea treatment for my dog. What do you recommend?',
           timestamp: new Date('2024-03-12T14:26:00'),
           id: 'user-7'
         },
         {
           role: 'assistant',
-          content: 'Based on your high arches and training intensity, I\'d recommend our Ultra Boost Pro Runner with enhanced arch support. They feature our latest cushioning technology and are designed for long-distance training. They\'re available in sizes 6-14 with wide options. Would you like to know more about their specific features?',
+          content: 'Frontline Plus is our most popular option, providing 30-day protection against fleas and ticks. What\'s your dog\'s weight? This will help me recommend the right dosage. We also have a special bundle that includes a free flea comb.',
           timestamp: new Date('2024-03-12T14:26:30'),
           id: 'assistant-7'
         },
         {
           role: 'user',
-          content: 'Yes, please tell me more about the cushioning and durability.',
+          content: 'She\'s about 45 pounds. How many months of treatment should I get?',
           timestamp: new Date('2024-03-12T14:27:00'),
           id: 'user-8'
         },
         {
           role: 'assistant',
-          content: 'The Ultra Boost Pro Runner features our responsive CloudFoam technology with a 12mm heel-to-toe drop. The midsole is designed to last 400-500 miles of running. The upper mesh is breathable and water-resistant, while the outsole uses high-durability rubber in high-impact areas. They\'re currently priced at $160, but we have a 20% off promotion for first-time buyers. Would you like to see our color options?',
+          content: 'For a 45-pound dog, I recommend the 45-88 lb dosage. Our 6-month supply is the best value at $109.99 (saves $30 vs. monthly). Plus, Autoship members save an extra 35% on their first order and 5% on recurring deliveries. Would you like me to add this to your cart?',
           timestamp: new Date('2024-03-12T14:27:30'),
           id: 'assistant-8'
-        },
-        {
-          role: 'user',
-          content: 'That sounds perfect. What colors do you have in size 10?',
-          timestamp: new Date('2024-03-12T14:28:00'),
-          id: 'user-9'
-        },
-        {
-          role: 'assistant',
-          content: 'In size 10, we currently have: Classic Black/White, Ocean Blue/Silver, Neon Yellow/Gray, and Limited Edition Marathon Red. The Ocean Blue and Marathon Red versions include reflective details for better visibility during early morning or evening runs. Would you like me to add any of these to your cart?',
-          timestamp: new Date('2024-03-12T14:28:30'),
-          id: 'assistant-9'
-        },
-        {
-          role: 'user',
-          content: 'I\'ll take the Ocean Blue/Silver in size 10. Can you also recommend some running socks?',
-          timestamp: new Date('2024-03-12T14:29:00'),
-          id: 'user-10'
-        },
-        {
-          role: 'assistant',
-          content: 'Great choice! I\'ve added the Ocean Blue/Silver Ultra Boost Pro Runner to your cart. For socks, I recommend our Performance Runner Pack - it includes 3 pairs of moisture-wicking, anti-blister socks with arch compression. They\'re perfect for marathon training and currently on sale for $24.99 (usually $35). Would you like me to add these to your cart as well?',
-          timestamp: new Date('2024-03-12T14:29:30'),
-          id: 'assistant-10'
         }
       ]
     },
     {
       id: 'chat-5',
-      title: 'Winter coat recommendations...',
+      title: 'Recommendations for new puppy...',
       createdAt: new Date('2024-03-11T11:15:00'),
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-11T11:15:00'),
           id: 'initial-5'
         },
         {
           role: 'user',
-          content: 'I\'m looking for a warm winter coat that\'s professional enough for work but can also handle weekend activities. I live in Chicago.',
+          content: 'I just adopted a puppy! What essential items do I need?',
           timestamp: new Date('2024-03-11T11:16:00'),
           id: 'user-11'
         },
         {
           role: 'assistant',
-          content: 'For Chicago winters, I\'d recommend our Executive Down Parka. It\'s rated for temperatures down to -20°F and features a clean, professional silhouette. It has a removable hood and hidden interior pockets for your phone and wallet. Would you like to know more about its features?',
+          content: 'Congratulations on your new puppy! I\'ll help you create a New Puppy Starter Kit. Our essentials bundle includes a crate, bed, food/water bowls, puppy food, collar, leash, and basic toys. What breed is your puppy?',
           timestamp: new Date('2024-03-11T11:16:30'),
           id: 'assistant-11'
         },
         {
           role: 'user',
-          content: 'Yes, what kind of insulation does it use? And is it waterproof?',
+          content: 'She\'s a Beagle mix, about 8 weeks old.',
           timestamp: new Date('2024-03-11T11:17:00'),
           id: 'user-12'
         },
         {
           role: 'assistant',
-          content: 'The Executive Down Parka uses 800-fill ethically sourced goose down with our proprietary WarmLock technology to prevent cold spots. The outer shell is fully waterproof with sealed seams and a DWR finish. It also features underarm vents for temperature regulation during your commute. The coat comes in Regular and Tall lengths. What\'s your usual jacket size?',
+          content: 'Perfect! For a Beagle mix, I recommend our medium-sized starter bundle. It includes a 30" crate with divider panel, machine-washable bed, Royal Canin puppy food, and chew toys perfect for teething. The bundle saves you 25% versus buying separately. Would you like to see the full details?',
           timestamp: new Date('2024-03-11T11:17:30'),
           id: 'assistant-12'
-        },
-        {
-          role: 'user',
-          content: 'I usually wear a medium in coats. Do these run true to size? And what colors are available?',
-          timestamp: new Date('2024-03-11T11:18:00'),
-          id: 'user-13'
-        },
-        {
-          role: 'assistant',
-          content: 'The Executive Down Parka runs slightly large to accommodate business attire underneath. For a medium, I\'d recommend trying a small if you prefer a closer fit. Available colors in small are Charcoal Gray, Midnight Navy, and Forest Green. Each color features subtle herringbone detailing and brushed metal hardware. The Charcoal Gray is our most popular choice for professional settings. Would you like to see how it looks on our models?',
-          timestamp: new Date('2024-03-11T11:18:30'),
-          id: 'assistant-13'
-        },
-        {
-          role: 'user',
-          content: 'Yes, please show me the Charcoal Gray in small. Also, what\'s the price and do you offer any warranty?',
-          timestamp: new Date('2024-03-11T11:19:00'),
-          id: 'user-14'
-        },
-        {
-          role: 'assistant',
-          content: 'The Executive Down Parka is priced at $495, and we\'re currently offering a 10% discount for our winter clearance. It comes with a lifetime warranty against manufacturing defects, and we offer free repairs for the first two years. The coat also includes our 60-day wear-and-return guarantee. I\'ve pulled up photos of the Charcoal Gray in small - you can see how it hits just above the knee and features a tailored waist for a professional silhouette. Would you like me to add this to your cart?',
-          timestamp: new Date('2024-03-11T11:19:30'),
-          id: 'assistant-14'
         }
       ]
     },
@@ -516,6 +468,20 @@ export const Profile = () => {
     setShowChatList(!showChatList);
   };
 
+  const petProfiles = [
+    {
+      id: 1,
+      name: 'Max',
+      breed: 'Golden Retriever',
+      age: '2 years',
+      image: 'https://cdn.playgrnd.media/v7/img/breeds/brd_1120.jpg?w=480&h=480&fm=jpg'
+    },
+    // Add more pet profiles as needed
+  ];
+
+  const treatsPoints = 2500;
+  const nextRewardAt = 3000;
+
   if (isLoading) {
     return <div className="loading">Loading...</div>;
   }
@@ -550,6 +516,32 @@ export const Profile = () => {
               </div>
             </div>
           )}
+
+          <div className="treats-rewards">
+            <h3>Treats™ Rewards</h3>
+            <div className="points">{treatsPoints} points</div>
+            <div className="rewards-progress">
+              <div 
+                className="progress-bar" 
+                style={{ width: `${(treatsPoints / nextRewardAt) * 100}%` }}
+              />
+            </div>
+            <p>{nextRewardAt - treatsPoints} points until next reward</p>
+          </div>
+
+          <div className="pet-profiles">
+            <h3>My Pets</h3>
+            <div className="pet-list">
+              {petProfiles.map(pet => (
+                <div key={pet.id} className="pet-card">
+                  <img src={pet.image} alt={pet.name} />
+                  <div className="pet-name">{pet.name}</div>
+                  <div className="pet-breed">{pet.breed}</div>
+                  <div className="pet-age">{pet.age}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="chatbot-section">
