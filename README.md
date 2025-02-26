@@ -1,29 +1,4 @@
-<think>
-Let me analyze this project thoroughly to understand the flow from when a user clicks a button on the control panel to the backend and back.
 
-From the code snippets provided, this appears to be a React application that integrates with a multimodal API (likely Google's Gemini model) for processing both text and audio/video inputs. The application has a pet store theme with various pages and components.
-
-Key components and their functions:
-1. ControlTray.tsx - Contains UI controls for starting/stopping streams (audio/video)
-2. LiveAPIContext.tsx - Provides a context for the Live API client
-3. MultimodalLiveClient.ts - Manages WebSocket connections to the backend API
-4. AudioRecorder.ts - Handles audio recording functionality
-5. AudioStreamer.ts - Handles streaming audio data
-6. App.tsx - Main application component
-
-When a user clicks on the start/play button in the control panel, here's the likely flow:
-
-1. The button click event in ControlTray.tsx triggers functions to start audio/video streams
-2. These functions connect to the LiveAPIContext which manages the API client
-3. The MultimodalLiveClient establishes a WebSocket connection to the backend
-4. For audio, AudioRecorder captures audio from the microphone and processes it
-5. For video, the use-webcam.ts or use-screen-capture.ts hooks capture video
-6. The data is sent to the backend via the WebSocket connection
-7. The backend processes the data and sends responses back
-8. The client receives the responses and updates the UI accordingly
-
-Let me trace this flow in more detail through the code to provide a comprehensive explanation.
-</think>
 
 # Understanding the Pet Store Assistant Application Flow
 
