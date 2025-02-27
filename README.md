@@ -2,7 +2,7 @@
 
 # Understanding the Pet Store Assistant Application Flow
 
-This detailed explanation will walk through how the pet store assistant application works, focusing on what happens when a user clicks the start button on the control panel. I'll connect all the pieces to show the complete flow from user interaction to backend processing and back.
+This detailed explanation will walk through how the pet store assistant application works, focusing on what happens when a user clicks the start button on the control panel. I'll connect all the pieces to show the complete flow from user interaction to backend processing and back .
 
 ## The Starting Point: User Interaction
 
