@@ -39,6 +39,7 @@ import StrawPanamaHat from './pages/StrawPanamaHat';
 import GapLogoTote from './pages/GapLogoTote';
 import ProductDetail from "./pages/ProductDetail";
 import PersonalizedProductDetail from './pages/PersonalizedProductDetail';
+import InStore from "./pages/InStore";
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -67,6 +68,7 @@ function App() {
                 <Route path="/" element={<All />} />
                 <Route path="/all" element={<All />} />
                 <Route path="/dog" element={<Dog />} />
+                <Route path="/instore" element={<InStore />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
                 <Route path="/baby-boot-jean" element={<BabyBootJean />} />
                 <Route path="/cart" element={<Cart />} />

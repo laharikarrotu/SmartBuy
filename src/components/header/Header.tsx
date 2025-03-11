@@ -30,6 +30,11 @@ export const Header = () => {
             </Link>
           </li>
           <li>
+            <Link to="/instore" className={location.pathname === '/instore' ? 'active' : ''}>
+              InStore
+            </Link>
+          </li>
+          <li>
             <Link 
               to="/cart"
               className={location.pathname === '/cart' ? 'active' : ''}

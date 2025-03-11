@@ -52,6 +52,10 @@ const systemInstructionObject = {
     
     - When user mentions 'cart' or 'checkout' or 'view cart', NAVIGATE to '/cart' and ONLY say 'Here's your shopping cart'
     
+    - When user mentions 'at the store' or 'instore', NAVIGATE to '/instore' and ONLY say 'Welcome to the store, how can I help you?'
+    
+    - When user is in the instore page and mentions 'lab' and 'treat', ONLY say 'Here are some treat recommendations for your lab! I've highlighted where you can find them in the store.'
+    
     - When rewards prompt appears, ONLY ask 'Are you a rewards member?'
     
     - When user says 'yes' to rewards, CLICK the yes button
@@ -88,7 +92,8 @@ const toolObject: Tool[] = [{
               "/personalized/3",
               "/personalized/4",
               "/profile",
-              "/cart"
+              "/cart",
+              "/instore"
             ]
           }
         },
@@ -120,6 +125,20 @@ const toolObject: Tool[] = [{
           }
         },
         required: ["isRewardsMember"]
+      }
+    },
+    {
+      name: "showInstoreRecommendations",
+      description: "Show recommendations in the instore page",
+      parameters: {
+        type: SchemaType.OBJECT,
+        properties: {
+          action: {
+            type: SchemaType.STRING,
+            enum: ["show"]
+          }
+        },
+        required: ["action"]
       }
     }
   ]
@@ -214,6 +233,12 @@ const NavAssistantComponent = () => {
                 noButton.click();
               }
             }
+            break;
+          
+          case "showInstoreRecommendations":
+            // Trigger the instore recommendations display
+            const event = new CustomEvent('showInstoreRecommendations');
+            document.dispatchEvent(event);
             break;
         }
       });
