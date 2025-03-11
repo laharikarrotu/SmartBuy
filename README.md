@@ -425,3 +425,4 @@ This pet store assistant application provides a seamless way for users to intera
 When you click "start," you're initiating a sophisticated chain of events that connects your device to powerful AI models, enables real-time communication, and creates a natural conversation experience. The application then interprets the AI's responses and can take actions like navigating pages or creating lists based on what you asked for.
 
 All of this happens in fractions of a second, giving the impression of a continuous, flowing conversation with an intelligent assistant who can help you find pet products, create shopping lists, and navigate the store.
+  
