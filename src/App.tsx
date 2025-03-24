@@ -31,6 +31,12 @@ import { OrderPaymentConfirmation } from './pages/OrderPaymentConfirmation';
 import { Profile } from './pages/Profile';
 import All from './pages/All';
 import Dog from './pages/Dog';
+import TV from './pages/TV';
+import ComputersAndTablets from './pages/ComputersAndTablets';
+import CellPhones from './pages/CellPhones';
+import Gaming from './pages/Gaming';
+import Cameras from './pages/Cameras';
+import SmartHome from './pages/SmartHome';
 import { Auth0ProviderWithNavigate } from './auth/Auth0ProviderWithNavigate';
 import { ProtectedRoute } from './auth/ProtectedRoute';
 import PersonalizedPage from './pages/PersonalizedPage';
@@ -68,6 +74,12 @@ function App() {
                 <Route path="/" element={<All />} />
                 <Route path="/all" element={<All />} />
                 <Route path="/dog" element={<Dog />} />
+                <Route path="/tv" element={<TV />} />
+                <Route path="/computers-tablets" element={<ComputersAndTablets />} />
+                <Route path="/cell-phones" element={<CellPhones />} />
+                <Route path="/gaming" element={<Gaming />} />
+                <Route path="/cameras" element={<Cameras />} />
+                <Route path="/smart-home" element={<SmartHome />} />
                 <Route path="/instore" element={<InStore />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
                 <Route path="/baby-boot-jean" element={<BabyBootJean />} />

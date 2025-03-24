@@ -10,7 +10,7 @@ const DogProducts = [
     sizes: "4 sizes",
     reviews: -2693,
     price: 89.99,
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5339575?$sclp-prd-main_large$"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5339575?$sclp-prd-main_large$"
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const DogProducts = [
     sizes: "4 sizes",
     reviews: -768,
     price: 83.99,
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5154856?$sclp-prd-main_large$"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5154856?$sclp-prd-main_large$"
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const DogProducts = [
     sizes: "5 sizes",
     reviews: -937,
     price: 64.99,
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5066968?$sclp-prd-main_large$"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5066968?$sclp-prd-main_large$"
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const DogProducts = [
     sizes: "2 sizes",
     reviews: -760,
     price: 59.99,
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5173207?$sclp-prd-main_large$"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5173207?$sclp-prd-main_large$"
   }
 ];
 
@@ -159,7 +159,7 @@ const Dog: React.FC = () => {
 
       <div className="hero-banner">
         <img 
-          src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2679600-Jan25_dPCS_CONs_DT" 
+          src="https://s7d2.scene7.com/is/image/smartbuy/WEB-2679600-Jan25_dPCS_CONs_DT" 
           alt="Dog Food Promotion"
         />
         <div className="promo-content">

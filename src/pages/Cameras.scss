@@ -1,0 +1,227 @@
+.cameras-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  .hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+  }
+
+  .deals-section {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+
+      .deal-card {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        h3 {
+          font-size: 1.4rem;
+          color: #333;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .products-section {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+
+      .product-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: contain;
+          background: #f8f9fa;
+          padding: 1rem;
+        }
+
+        .product-info {
+          padding: 1.5rem;
+
+          h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+          }
+
+          .description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+          }
+
+          .specs {
+            margin-bottom: 1rem;
+
+            .spec-item {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 0.25rem;
+              font-size: 0.9rem;
+
+              .spec-key {
+                color: #666;
+              }
+
+              .spec-value {
+                color: #333;
+                font-weight: 500;
+              }
+            }
+          }
+
+          .reviews {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+
+            .rating {
+              color: #f8b400;
+            }
+
+            .count {
+              color: #666;
+            }
+          }
+
+          .price {
+            font-size: 1.4rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 1rem;
+          }
+
+          .add-to-cart-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #0055a6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+              background: darken(#0055a6, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .categories-section {
+    h2 {
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+
+      .category-card {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+        border: none;
+        width: 100%;
+        display: block;
+
+        &:hover {
+          transform: translateY(-5px);
+          background: darken(#f8f9fa, 5%);
+        }
+
+        &:focus {
+          outline: 2px solid #0055a6;
+          outline-offset: 2px;
+        }
+
+        h3 {
+          font-size: 1.2rem;
+          color: #333;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cameras-page {
+    padding: 1rem;
+
+    .hero-section {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+} 

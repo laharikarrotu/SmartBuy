@@ -16,22 +16,22 @@ const PopularPicks = [
   {
     points: "5X",
     category: "All dog food, any brand",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU1_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU1_HP_FW01_DMA"
   },
   {
     points: "5X",
     category: "All cat food & treats, any brand",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU2_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU2_HP_FW01_DMA"
   },
   {
     points: "5X",
     category: "All dog treats, any brand",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU3_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU3_HP_FW01_DMA"
   },
   {
     points: "5X",
     category: "Any Salon, PetsHotel, Doggie Day Camp, or Training service",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU4_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU4_HP_FW01_DMA"
   }
 ];
 
@@ -40,21 +40,21 @@ const PromotionalOffers = [
     offer: "Get 10% in Savings",
     details: "5X points on products, services, or donations",
     conditions: "Offer valid through 2/9",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU1_HP_FW01_DMA",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU1_HP_FW01_DMA",
     description: "Treats Rewards logo and a woman hugging her dog"
   },
   {
     offer: "Earn 5X points",
     details: "10% back in savings for eligible purchases",
     conditions: "Products, services, or donations",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU2_HP_FW01_DMA",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU2_HP_FW01_DMA",
     description: "Treats Rewards logo and a woman hugging her dog"
   },
   {
     offer: "Activate Now",
     details: "Requires activation to earn rewards and savings",
     conditions: "Must activate before making purchases",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU3_HP_FW01_DMA",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU3_HP_FW01_DMA",
     description: "Treats Rewards logo and a woman hugging her dog"
   }
 ];
@@ -64,39 +64,39 @@ const PromotionalBanner = {
   subtitle: "10% back in savings",
   description: "products, services or donations thru 2/9",
   buttonText: "Activate now",
-  image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_HCHS_HP_FW01_DT",
-  logo: "https://s7d2.scene7.com/is/image/PetSmart/treats_rewards_logo"
+  image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_HCHS_HP_FW01_DT",
+  logo: "https://s7d2.scene7.com/is/image/smartbuy/treats_rewards_logo"
 };
 
 const PetCategories = [
   {
     name: "Dog",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS1_NewPet_DT",
     link: "/dog"
   },
   {
     name: "Cat",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS2_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS2_NewPet_DT",
     link: "/category/cat"
   },
   {
     name: "Fish",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS3_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS3_NewPet_DT",
     link: "/category/fish"
   },
   {
     name: "Bird",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS4_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS4_NewPet_DT",
     link: "/category/birds"
   },
   {
     name: "Reptile",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS5_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS5_NewPet_DT",
     link: "/category/reptiles"
   },
   {
     name: "Small Pet",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS6_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS6_NewPet_DT",
     link: "/category/small-pets"
   }
 ];
@@ -107,7 +107,7 @@ const Services = [
     description: "Valentine's Day Package - Earn 2X points on package thru 2/14",
     visualElements: "Grooming Salon logo, 2X points callout, dog wearing a Valentine's bandana",
     expirationDate: "14-Feb",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CS1_HP_FW01_DT",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CS1_HP_FW01_DT",
     link: "/services/grooming"
   },
   {
@@ -115,7 +115,7 @@ const Services = [
     description: "6-wk. Training Classes - Only $129 thru 3/2",
     visualElements: "Dog Training logo, dog wearing a graduation cap",
     expirationDate: "2-Mar",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2268408-Jan25_4CS2_HP-FW48_DMA",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2268408-Jan25_4CS2_HP-FW48_DMA",
     link: "/services/training"
   },
   {
@@ -123,7 +123,7 @@ const Services = [
     description: "Book a 4-night stay, get the 5th night FREE thru 3/2",
     visualElements: "PetsHotel logo, dog laying in a dog bed",
     expirationDate: "2-Mar",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2268408-Jan25_4CS3_HP-FW48_DMA",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2268408-Jan25_4CS3_HP-FW48_DMA",
     link: "/services/petshotel"
   },
   {
@@ -131,7 +131,7 @@ const Services = [
     description: "Doggie Day Camp - New campers SAVE 50% on 1st day of play",
     visualElements: "Doggie Day Camp logo, three dogs playing",
     expirationDate: "No specific expiration mentioned",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2268408-Jan25_4CS4_HP-FW48_DMA",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2268408-Jan25_4CS4_HP-FW48_DMA",
     link: "/services/doggie-day-camp"
   }
 ];
@@ -139,13 +139,112 @@ const Services = [
 const Deals = [
   {
     title: "Save 30% on select dog toys",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/deals-dog-toys",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/deals-dog-toys",
     link: "/deals/dog-toys"
   },
   {
     title: "Buy 1, Get 1 50% off cat treats",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/deals-cat-treats",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/deals-cat-treats",
     link: "/deals/cat-treats"
+  }
+];
+
+const ElectronicsCategories = [
+  {
+    name: "TVs & Home Theater",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505140_sd.jpg",
+    link: "/tv"
+  },
+  {
+    name: "Computers & Tablets",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6506/6506325_sd.jpg",
+    link: "/category/computers-tablets"
+  },
+  {
+    name: "Cell Phones",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505631_sd.jpg",
+    link: "/category/cell-phones"
+  },
+  {
+    name: "Gaming",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6509/6509942_sd.jpg",
+    link: "/category/gaming"
+  },
+  {
+    name: "Cameras",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505727_sd.jpg",
+    link: "/category/cameras"
+  },
+  {
+    name: "Smart Home",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505910_sd.jpg",
+    link: "/category/smart-home"
+  }
+];
+
+const TechDeals = [
+  {
+    title: "Save up to $500 on select OLED TVs",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505140_sd.jpg",
+    link: "/deals/tv-deals",
+    savings: "Up to $500 off",
+    endDate: "Ends Saturday"
+  },
+  {
+    title: "Save $200 on select laptops",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6506/6506325_sd.jpg",
+    link: "/deals/laptop-deals",
+    savings: "$200 off",
+    endDate: "Limited time offer"
+  },
+  {
+    title: "Save up to $100 on the latest smartphones",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505631_sd.jpg",
+    link: "/deals/phone-deals",
+    savings: "Up to $100 off",
+    endDate: "This week only"
+  }
+];
+
+const TechPromotions = [
+  {
+    offer: "Student Deals",
+    details: "Save up to $100 extra on laptops",
+    conditions: "Valid student ID required",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6506/6506325_sd.jpg",
+    description: "Student shopping for laptop"
+  },
+  {
+    offer: "Trade-In Offer",
+    details: "Get up to $800 in trade-in value",
+    conditions: "For eligible smartphones",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505631_sd.jpg",
+    description: "Latest smartphones on display"
+  },
+  {
+    offer: "Gaming Bundle",
+    details: "Save $50 when you buy console + game",
+    conditions: "Select items only",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6509/6509942_sd.jpg",
+    description: "Gaming console and accessories"
+  }
+];
+
+const FeaturedTechProducts = [
+  {
+    points: "3X",
+    category: "4K & 8K TVs",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505140_sd.jpg"
+  },
+  {
+    points: "2X",
+    category: "Gaming Laptops & PCs",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6506/6506325_sd.jpg"
+  },
+  {
+    points: "2X",
+    category: "Smart Home Devices",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505910_sd.jpg"
   }
 ];
 
@@ -163,7 +262,7 @@ const All: React.FC = () => {
     console.log("All.tsx is mounted!");
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/petsmart_all_products.json");
+        const response = await fetch("/smartbuy_all_products.json");
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -212,10 +311,59 @@ const All: React.FC = () => {
             <button className="activate-button">Activate now</button>
           </div>
           <img 
-            src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_HCHS_HP_FW01_DT"
-            alt="PetSmart Treats Rewards"
+            src="https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_HCHS_HP_FW01_DT"
+            alt="smartbuy Treats Rewards"
             className="banner-image"
           />
+        </div>
+      </section>
+
+      {/* Electronics Categories Section */}
+      <section className="categories-section">
+        <h2>Shop Electronics</h2>
+        <div className="categories-grid">
+          {ElectronicsCategories.map((category, index) => (
+            <div key={index} className="category-card" onClick={() => navigate(category.link)}>
+              <img src={category.image} alt={category.name} />
+              <h3>{category.name}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tech Deals Section */}
+      <section className="deals-section">
+        <h2>Top Tech Deals</h2>
+        <div className="deals-grid">
+          {TechDeals.map((deal, index) => (
+            <div key={index} className="deal-card" onClick={() => navigate(deal.link)}>
+              <img src={deal.image} alt={deal.title} />
+              <div className="deal-content">
+                <h3>{deal.title}</h3>
+                <p className="savings">{deal.savings}</p>
+                <p className="end-date">{deal.endDate}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured Tech Products */}
+      <section className="featured-section">
+        <h2>Featured Tech</h2>
+        <div className="featured-grid">
+          {FeaturedTechProducts.map((product, index) => (
+            <div key={index} className="featured-card">
+              <div className="points-badge">
+                <span className="points">{product.points}</span>
+                <span className="pts">pts</span>
+              </div>
+              <div className="featured-content">
+                <h3>{product.category}</h3>
+                <img src={product.image} alt={product.category} />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -310,8 +458,6 @@ const All: React.FC = () => {
         </div>
       </section>
 
-
-
       {/* Newsletter Signup */}
       <section className="newsletter-signup">
         <div className="signup-content">
@@ -328,7 +474,7 @@ const All: React.FC = () => {
       <section className="bottom-banner">
         <div className="banner-content">
           <div className="banner-text">
-            <h2>Find a PetSmart Store Near You</h2>
+            <h2>Find a smartbuy Store Near You</h2>
             <p>Shop in store or pick up curbside</p>
           </div>
           <button className="find-store-btn">Find a Store</button>

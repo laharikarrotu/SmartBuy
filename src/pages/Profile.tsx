@@ -44,7 +44,7 @@ export const Profile = () => {
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you find the perfect products for your pet today?',
+          content: 'Hello! I\'m your smartbuy shopping assistant. How can I help you find the perfect products for your pet today?',
           timestamp: new Date('2024-03-15T10:30:00'),
           id: 'initial-1'
         },
@@ -81,7 +81,7 @@ export const Profile = () => {
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your smartbuy shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-14T15:20:00'),
           id: 'initial-2'
         },
@@ -118,7 +118,7 @@ export const Profile = () => {
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your smartbuy shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-13T09:15:00'),
           id: 'initial-3'
         },
@@ -155,7 +155,7 @@ export const Profile = () => {
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your smartbuy shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-12T14:25:00'),
           id: 'initial-4'
         },
@@ -192,7 +192,7 @@ export const Profile = () => {
       messages: [
         {
           role: 'assistant',
-          content: 'Hello! I\'m your PetSmart shopping assistant. How can I help you today?',
+          content: 'Hello! I\'m your smartbuy shopping assistant. How can I help you today?',
           timestamp: new Date('2024-03-11T11:15:00'),
           id: 'initial-5'
         },

@@ -195,7 +195,7 @@
 
         button {
           padding: 8px 16px;
-          background: var(--petsmart-blue);
+          background: var(--smartbuy-blue);
           color: white;
           border: none;
           border-radius: 6px;
@@ -216,7 +216,7 @@
       .wallet-pay-btn {
         width: 100%;
         padding: 16px;
-        background: var(--petsmart-blue);
+        background: var(--smartbuy-blue);
         color: white;
         border: none;
         border-radius: 8px;
@@ -225,7 +225,7 @@
         transition: background 0.2s;
 
         &:hover {
-          background: var(--petsmart-dark-blue);
+          background: var(--smartbuy-dark-blue);
         }
       }
     }
@@ -259,7 +259,7 @@
         gap: 16px;
 
         .wallet-pay-btn {
-          background: var(--petsmart-blue);
+          background: var(--smartbuy-blue);
           color: white;
           padding: 16px 24px;
           border: none;
@@ -270,7 +270,7 @@
           transition: background 0.2s;
 
           &:hover {
-            background: var(--petsmart-dark-blue);
+            background: var(--smartbuy-dark-blue);
           }
         }
       }
@@ -279,7 +279,7 @@
     .payment-success {
       text-align: center;
       padding: 24px;
-      color: var(--petsmart-green);
+      color: var(--smartbuy-green);
 
       .success-tick {
         font-size: 3rem;
@@ -326,14 +326,14 @@
         margin-top: 16px;
         padding: 8px 16px;
         background: transparent;
-        border: 1px solid var(--petsmart-blue);
-        color: var(--petsmart-blue);
+        border: 1px solid var(--smartbuy-blue);
+        color: var(--smartbuy-blue);
         border-radius: 6px;
         cursor: pointer;
         transition: all 0.2s;
 
         &:hover {
-          background: var(--petsmart-light-blue);
+          background: var(--smartbuy-light-blue);
         }
       }
     }
@@ -352,13 +352,13 @@
       transition: all 0.2s;
 
       &:hover {
-        border-color: var(--petsmart-blue);
-        background: var(--petsmart-light-blue);
+        border-color: var(--smartbuy-blue);
+        background: var(--smartbuy-light-blue);
       }
 
       &.selected {
-        border-color: var(--petsmart-blue);
-        background: var(--petsmart-light-blue);
+        border-color: var(--smartbuy-blue);
+        background: var(--smartbuy-light-blue);
       }
 
       .option-details {

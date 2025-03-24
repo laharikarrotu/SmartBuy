@@ -136,7 +136,7 @@ export const Cart: React.FC = () => {
     setError('');
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
-      const fakePaymentLink = `https://payment.petsmart.com/${Math.random().toString(36).substring(7)}`;
+      const fakePaymentLink = `https://payment.smartbuy.com/${Math.random().toString(36).substring(7)}`;
       setPaymentLink(fakePaymentLink);
       setError('Payment link has been sent to your phone. Click the link below to complete payment.');
     } catch (err) {
@@ -488,7 +488,7 @@ export const Cart: React.FC = () => {
           </div>
 
           <div className="charity-donation">
-            <h3>PetSmart Charities® Donation</h3>
+            <h3>smartbuy Charities® Donation</h3>
             <p>Earn 2X points on every donation. Your donation helps pets in need & all while you shop.</p>
             <div className="donation-input">
               <input type="number" defaultValue={1} min={1} />

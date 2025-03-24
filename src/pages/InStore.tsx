@@ -27,7 +27,7 @@ const storeProducts: Product[] = [
       "$10 back in savings (5,000 points) when you spend $50+ on merchandise",
       "Extra 20% off online only with code SAVE20, see terms"
     ],
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5349460?$sclp-prd-main_large$&fmt=webp&qlt=80",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5349460?$sclp-prd-main_large$&fmt=webp&qlt=80",
     location: "Aisle 5, Section B",
     isNew: false
   },
@@ -41,7 +41,7 @@ const storeProducts: Product[] = [
       "$10 back in savings (5,000 points) when you spend $50+",
       "Buy 2, Get the 3rd 50% Off Select Dog Treats!"
     ],
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5264876?$sclp-prd-main_large$&fmt=webp&qlt=80",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5264876?$sclp-prd-main_large$&fmt=webp&qlt=80",
     location: "Aisle 3, Section C",
     isNew: false
   },
@@ -54,7 +54,7 @@ const storeProducts: Product[] = [
       "$10 back in savings (5,000 points) when you spend $50+",
       "Extra 20% off online only with code SAVE20, see terms"
     ],
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5349455?$sclp-prd-main_large$&fmt=webp&qlt=80",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5349455?$sclp-prd-main_large$&fmt=webp&qlt=80",
     location: "Aisle 4, Section A",
     isNew: true
   },
@@ -68,7 +68,7 @@ const storeProducts: Product[] = [
       "$10 back in savings (5,000 points) when you spend $50+",
       "Buy 2, Get the 3rd 50% Off Select Dog Treats!"
     ],
-    image: "https://s7d2.scene7.com/is/image/PetSmart/5279234?$sclp-prd-main_large$&fmt=webp&qlt=80",
+    image: "https://s7d2.scene7.com/is/image/smartbuy/5279234?$sclp-prd-main_large$&fmt=webp&qlt=80",
     location: "Aisle 2, Section D",
     isNew: true
   }

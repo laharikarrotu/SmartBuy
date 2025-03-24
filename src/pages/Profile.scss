@@ -1,9 +1,9 @@
 :root {
-  --petsmart-blue: #0055a6;
-  --petsmart-light-blue: #e6f3ff;
-  --petsmart-dark-blue: #003d75;
-  --petsmart-red: #e31837;
-  --petsmart-green: #00a650;
+  --smartbuy-blue: #0055a6;
+  --smartbuy-light-blue: #e6f3ff;
+  --smartbuy-dark-blue: #003d75;
+  --smartbuy-red: #e31837;
+  --smartbuy-green: #00a650;
 }
 
 .profile-page {
@@ -67,7 +67,7 @@
   border: 1px solid #e0e0e0;
 
   h1 {
-    color: var(--petsmart-blue);
+    color: var(--smartbuy-blue);
     margin-bottom: 2rem;
     font-size: 1.8rem;
   }
@@ -121,14 +121,14 @@
     transition: background-color 0.2s;
     
     &:hover {
-      background: var(--petsmart-light-blue);
+      background: var(--smartbuy-light-blue);
     }
     
     .stat-value {
       display: block;
       font-size: 1.5rem;
       font-weight: bold;
-      color: var(--petsmart-blue);
+      color: var(--smartbuy-blue);
     }
     
     .stat-label {
@@ -210,10 +210,10 @@
   align-items: center;
   padding: 0.5rem;
   border-bottom: 1px solid #e0e0e0;
-  background: var(--petsmart-light-blue);
+  background: var(--smartbuy-light-blue);
 
   h2 {
-    color: var(--petsmart-blue);
+    color: var(--smartbuy-blue);
   }
 }
 
@@ -398,14 +398,14 @@
     
     &.user {
       align-self: flex-end;
-      background: var(--petsmart-blue);
+      background: var(--smartbuy-blue);
       color: white;
     }
     
     &.assistant {
       align-self: flex-start;
-      background: var(--petsmart-light-blue);
-      color: var(--petsmart-dark-blue);
+      background: var(--smartbuy-light-blue);
+      color: var(--smartbuy-dark-blue);
     }
 
     .message-timestamp {
@@ -446,7 +446,7 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    background: var(--petsmart-blue);
+    background: var(--smartbuy-blue);
     border: none;
     cursor: pointer;
     display: flex;
@@ -461,7 +461,7 @@
     }
     
     &:hover {
-      background: var(--petsmart-dark-blue);
+      background: var(--smartbuy-dark-blue);
     }
   }
 }
@@ -481,34 +481,34 @@
 
   .new-chat {
     padding: 0.5rem 1rem;
-    border: 1px solid var(--petsmart-blue);
+    border: 1px solid var(--smartbuy-blue);
     border-radius: 4px;
     background: white;
-    color: var(--petsmart-blue);
+    color: var(--smartbuy-blue);
     cursor: pointer;
     transition: all 0.2s;
 
     &:hover {
-      background: var(--petsmart-light-blue);
+      background: var(--smartbuy-light-blue);
     }
   }
 }
 
 .treats-rewards {
-  background: var(--petsmart-light-blue);
+  background: var(--smartbuy-light-blue);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 1rem;
 
   h3 {
-    color: var(--petsmart-blue);
+    color: var(--smartbuy-blue);
     margin-bottom: 0.5rem;
   }
 
   .points {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--petsmart-blue);
+    color: var(--smartbuy-blue);
   }
 
   .rewards-progress {
@@ -520,7 +520,7 @@
 
     .progress-bar {
       height: 100%;
-      background: var(--petsmart-blue);
+      background: var(--smartbuy-blue);
       transition: width 0.3s ease;
     }
   }
@@ -530,7 +530,7 @@
   margin-top: 2rem;
 
   h3 {
-    color: var(--petsmart-blue);
+    color: var(--smartbuy-blue);
     margin-bottom: 1rem;
   }
 
@@ -560,7 +560,7 @@
 
       .pet-name {
         font-weight: bold;
-        color: var(--petsmart-blue);
+        color: var(--smartbuy-blue);
       }
 
       .pet-breed {

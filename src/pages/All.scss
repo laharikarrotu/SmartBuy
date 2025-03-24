@@ -1133,6 +1133,168 @@ body {
       }
     }
   }
+
+  .categories-section {
+    margin: 40px 0;
+    padding: 0 20px;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--smartbuy-blue);
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      
+      .category-card {
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        transition: transform 0.2s;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 4px;
+          margin-bottom: 10px;
+        }
+
+        h3 {
+          font-size: 16px;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .deals-section {
+    margin: 40px 0;
+    padding: 0 20px;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--smartbuy-blue);
+    }
+
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+
+      .deal-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
+        .deal-content {
+          padding: 15px;
+
+          h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+          }
+
+          .savings {
+            color: #e31837;
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
+
+          .end-date {
+            color: #666;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .featured-section {
+    margin: 40px 0;
+    padding: 0 20px;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--smartbuy-blue);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+
+      .featured-card {
+        position: relative;
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        .points-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: var(--smartbuy-blue);
+          color: white;
+          padding: 5px 10px;
+          border-radius: 4px;
+          font-weight: bold;
+
+          .points {
+            font-size: 18px;
+          }
+
+          .pts {
+            font-size: 12px;
+            margin-left: 2px;
+          }
+        }
+
+        .featured-content {
+          h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+          }
+
+          img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 1024px) {
