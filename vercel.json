@@ -1,11 +1,15 @@
 {
   "version": 2,
+  "buildCommand": "pnpm install && pnpm run build",
+  "installCommand": "pnpm install",
   "builds": [
     {
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "build",
+        "installCommand": "pnpm install --no-frozen-lockfile",
+        "buildCommand": "pnpm run build"
       }
     }
   ],
