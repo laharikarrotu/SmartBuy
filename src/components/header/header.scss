@@ -1,70 +1,75 @@
 .main-header {
-    background: var(--Neutral-15);
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--Neutral-20);
-  
-    nav {
-      ul {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-  
-        li {
-          a {
-            color: var(--Neutral-90);
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-  
-            &:hover {
-              background: var(--Neutral-20);
-            }
-  
-            &.active {
-              background: var(--Blue-500);
-              color: white;
-            }
+  background: var(--Neutral-15);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--Neutral-20);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
-            .cart-count {
-              position: absolute;
-              top: -5px;
-              right: -5px;
-              background: #e31837;
-              color: white;
-              font-size: 0.8rem;
-              padding: 2px 6px;
-              border-radius: 50%;
-              min-width: 18px;
-              text-align: center;
-            }
+  nav {
+    ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+
+      li {
+        a {
+          text-decoration: none;
+          color: var(--Neutral-90);
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          position: relative;
+
+          &:hover {
+            background: var(--Neutral-20);
           }
 
-          .auth-button {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            
-            span {
-              color: var(--Neutral-90);
-            }
-            
-            button {
-              padding: 0.5rem 1rem;
-              border-radius: 8px;
-              background: var(--Blue-500);
-              color: white;
-              border: none;
-              cursor: pointer;
-              transition: all 0.3s ease;
+          &.active {
+            background: var(--Blue-500);
+            color: white;
+          }
+        }
 
-              &:hover {
-                background: var(--Blue-600);
-              }
+        .cart-count {
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          background: #e31837;
+          color: white;
+          font-size: 0.8rem;
+          padding: 2px 6px;
+          border-radius: 50%;
+          min-width: 18px;
+          text-align: center;
+        }
+
+        .auth-button {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          
+          span {
+            color: var(--Neutral-90);
+          }
+          
+          button {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: var(--Blue-500);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: var(--Blue-600);
             }
           }
         }
@@ -72,17 +77,43 @@
     }
   }
 
-  .auth-button {
-    background: var(--Blue-500);
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.3s ease;
+  .header-right {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
 
-    &:hover {
-      background: var(--Blue-600);
+    .header-link {
+      text-decoration: none;
+      color: var(--Neutral-90);
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: var(--Neutral-20);
+        color: var(--Blue-500);
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.5rem;
+      }
     }
   }
+}
+
+.auth-button {
+  background: var(--Blue-500);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--Blue-600);
+  }
+}

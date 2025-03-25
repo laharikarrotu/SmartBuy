@@ -43,6 +43,7 @@ import ProductDetail from "./pages/ProductDetail";
 import PersonalizedProductDetail from './pages/PersonalizedProductDetail';
 import InStore from "./pages/InStore";
 import Womens from './pages/Womens';
+import { Search } from './pages/Search';
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -67,6 +68,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<All />} />
                 <Route path="/all" element={<All />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="/womens" element={<Womens />} />
                 <Route path="/womens/new-arrivals" element={<Womens />} />
                 <Route path="/womens/jeans" element={<BabyBootJean />} />

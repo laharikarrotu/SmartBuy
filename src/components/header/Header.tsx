@@ -1,7 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './header.scss';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useCart } from '../../contexts/CartContext';
+import { useState } from 'react';
 
 interface CartItem {
   quantity: number;
@@ -10,23 +11,23 @@ interface CartItem {
 
 export const Header: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { isAuthenticated, loginWithPopup, logout } = useAuth0();
   const { items } = useCart();
+  const [showSearch, setShowSearch] = useState(false);
   const cartItemsCount = items.reduce((total: number, item: CartItem) => total + item.quantity, 0);
 
   const handleSearch = () => {
-    // Implement search functionality
-    console.debug('Search clicked');
+    setShowSearch(true);
+    navigate('/search');
   };
 
   const handleProfile = () => {
-    // Implement profile functionality
-    console.debug('Profile clicked');
-  };
-
-  const handleCart = () => {
-    // Implement cart functionality
-    console.debug('Cart clicked');
+    if (isAuthenticated) {
+      navigate('/profile');
+    } else {
+      loginWithPopup();
+    }
   };
 
   return (
@@ -119,14 +120,11 @@ export const Header: React.FC = () => {
         </ul>
       </nav>
       <div className="header-right">
-        <button className="header-button" onClick={handleSearch}>
+        <button className="header-link" onClick={handleSearch}>
           <span className="material-symbols-outlined">search</span>
         </button>
-        <button className="header-button" onClick={handleProfile}>
+        <button className="header-link" onClick={handleProfile}>
           <span className="material-symbols-outlined">person</span>
-        </button>
-        <button className="header-button" onClick={handleCart}>
-          <span className="material-symbols-outlined">shopping_bag</span>
         </button>
       </div>
     </header>
