@@ -22,14 +22,6 @@ export const Header: React.FC = () => {
     navigate('/search');
   };
 
-  const handleProfile = () => {
-    if (isAuthenticated) {
-      navigate('/profile');
-    } else {
-      loginWithPopup();
-    }
-  };
-
   return (
     <header className="main-header">
       <nav>
@@ -122,9 +114,6 @@ export const Header: React.FC = () => {
       <div className="header-right">
         <button className="header-link" onClick={handleSearch}>
           <span className="material-symbols-outlined">search</span>
-        </button>
-        <button className="header-link" onClick={handleProfile}>
-          <span className="material-symbols-outlined">person</span>
         </button>
       </div>
     </header>

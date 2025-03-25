@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import type { Product as ProductType, ApiResponse } from '../types';
 import './All.scss';
 
 interface Product {
@@ -287,24 +288,35 @@ const WomenFeaturedProducts = [
 const All: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth0();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductType[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("default");
   const [loading, setLoading] = useState(true);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
+        setError(null);
         const response = await fetch("/smartbuy_all_products.json");
-        const data = await response.json();
-        setProducts(data.products);
-      } catch (error) {
-        // Log error to a proper logging service
-        if (error instanceof Error) {
-          // You could replace this with a proper logging service
-          console.error("Error fetching products:", error.message);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
+        const data: ApiResponse<{ products: ProductType[] }> = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.error || 'Failed to fetch products');
+        }
+        
+        setProducts(data.data.products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setError(error instanceof Error ? error.message : 'An unknown error occurred');
+        setProducts([]);
       } finally {
         setLoading(false);
       }
@@ -314,170 +326,104 @@ const All: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    let sortedProducts = [...products];
+    if (!products.length) return;
+
+    let filtered = [...products];
 
     if (categoryFilter) {
-      sortedProducts = sortedProducts.filter((p) => p.Category === categoryFilter);
+      filtered = filtered.filter(product => 
+        product.category.toLowerCase() === categoryFilter.toLowerCase()
+      );
     }
 
-    if (sortOption === "price-low-high") {
-      sortedProducts.sort((a, b) => (a.DiscountedPrice || 0) - (b.DiscountedPrice || 0));
-    } else if (sortOption === "price-high-low") {
-      sortedProducts.sort((a, b) => (b.DiscountedPrice || 0) - (a.DiscountedPrice || 0));
+    switch (sortOption) {
+      case "price-low-high":
+        filtered.sort((a, b) => a.price - b.price);
+        break;
+      case "price-high-low":
+        filtered.sort((a, b) => b.price - a.price);
+        break;
+      case "rating":
+        filtered.sort((a, b) => b.rating - a.rating);
+        break;
+      default:
+        // Keep original order
+        break;
     }
 
-    setFilteredProducts(sortedProducts);
-  }, [categoryFilter, sortOption, products]);
+    setFilteredProducts(filtered);
+  }, [products, categoryFilter, sortOption]);
 
   if (loading) return <div className="loading-message">Loading pet products...</div>;
 
   return (
     <div className="home-page">
-      {/* Top Promo Banner */}
-      <div className="top-promo-banner">
-        <a href="#">Get 10% IN SAVINGS (5X pts) on products, services or donations thru 2/9 ›</a>
-      </div>
-
       {/* Hero Banner */}
-      <section className="hero-banner" style={{
-        background: `linear-gradient(45deg, 
-          rgba(255, 89, 94, 0.85), 
-          rgba(255, 202, 58, 0.85),
-          rgba(138, 201, 38, 0.85),
-          rgba(25, 130, 196, 0.85))`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '600px',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div className="banner-content" style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 40px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          width: '100%'
-        }}>
-          <div className="banner-text" style={{
-            flex: '1',
-            color: 'white',
-            textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
-          }}>
-            <h1 style={{
-              fontSize: '4rem',
-              marginBottom: '1.5rem',
-              fontWeight: 'bold',
-              lineHeight: '1.2'
-            }}>Everything You Need<br/>All in One Place</h1>
-            <h2 style={{
-              fontSize: '2rem',
-              marginBottom: '1.5rem',
-              fontWeight: '400',
-              color: '#FFE5E5'
-            }}>Pets • Fashion • Electronics</h2>
-            <p style={{
-              fontSize: '1.2rem',
-              marginBottom: '2rem',
-              maxWidth: '600px',
-              lineHeight: '1.6'
-            }}>Discover amazing deals across all categories with up to 50% off on selected items</p>
-            <div style={{ display: 'flex', gap: '20px' }}>
+      <section className="hero-banner">
+        {/* Promotional Banner */}
+        <div className="promotional-banner">
+          <h2>Get 10% IN SAVINGS (5X pts) on products, services or donations thru 2/9 ›</h2>
+        </div>
+
+        <div className="banner-content">
+          <div className="banner-text">
+            <h1>Everything You Need<br/>All in One Place</h1>
+            <div className="banner-buttons">
               <button 
                 onClick={() => navigate('/new-arrivals')}
-                style={{
-                  padding: '15px 40px',
-                  fontSize: '1.1rem',
-                  backgroundColor: '#FF595E',
-                  color: 'white',
-                  border: 'none',
-                  borderRadius: '30px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  textTransform: 'uppercase',
-                  fontWeight: '600',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
-                }}
+                className="primary-button"
               >
                 Shop Now
               </button>
               <button 
                 onClick={() => navigate('/deals')}
-                style={{
-                  padding: '15px 40px',
-                  fontSize: '1.1rem',
-                  backgroundColor: 'transparent',
-                  color: 'white',
-                  border: '2px solid white',
-                  borderRadius: '30px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  textTransform: 'uppercase',
-                  fontWeight: '600'
-                }}
+                className="secondary-button"
               >
                 View Deals
               </button>
             </div>
           </div>
-          <div className="banner-images" style={{
-            flex: '1',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '20px',
-            padding: '20px'
-          }}>
-            <img 
-              src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT" 
-              alt="Pet Category"
-              style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-                borderRadius: '15px',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                transform: 'rotate(-5deg)'
-              }}
-            />
-            <img 
-              src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505140_sd.jpg" 
-              alt="Electronics Category"
-              style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-                borderRadius: '15px',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                transform: 'rotate(5deg)'
-              }}
-            />
-            <img 
-              src="https://img.shopstyle-cdn.com/sim/96/81/9681c7c8db9e0e4e6e9e5c8c8c8c8c8c_best/gap-high-rise-vintage-slim-jeans.jpg" 
-              alt="Fashion Category"
-              style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-                borderRadius: '15px',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                transform: 'rotate(5deg)'
-              }}
-            />
-            <img 
-              src="https://img.shopstyle-cdn.com/sim/44/a0/44a0c8c8db9e0e4e6e9e5c8c8c8c8c8c_best/gap-spring-lookbook.jpg" 
-              alt="Deals Category"
-              style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-                borderRadius: '15px',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                transform: 'rotate(-5deg)'
-              }}
-            />
+          <div className="banner-images">
+            <div className="image-container">
+              <img 
+                src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT" 
+                alt="Pet Category"
+                className="category-image rotate-left"
+              />
+              <div className="image-overlay">
+                <h3>Pets</h3>
+              </div>
+            </div>
+            <div className="image-container">
+              <img 
+                src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505140_sd.jpg" 
+                alt="Electronics Category"
+                className="category-image rotate-right"
+              />
+              <div className="image-overlay">
+                <h3>Electronics</h3>
+              </div>
+            </div>
+            <div className="image-container">
+              <img 
+                src="https://www.panaprium.com/cdn/shop/articles/different_fashion_styles_up.jpg?v=1712222301&width=1024" 
+                alt="Fashion Category"
+                className="category-image rotate-left"
+              />
+              <div className="image-overlay">
+                <h3>Fashion</h3>
+              </div>
+            </div>
+            <div className="image-container">
+              <img 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR726y2T4O7Tn31ZxjqGtMxCnTiPTAdJWzFpA&s" 
+                alt="Deals Category"
+                className="category-image rotate-right"
+              />
+              <div className="image-overlay">
+                <h3>Deals</h3>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -610,19 +556,15 @@ const All: React.FC = () => {
       {/* Products Grid */}
       <div className="store-layout">
         <div className="products-grid">
-          {filteredProducts.map((item, index) => (
-            <div key={index} className="product-card">
-              <img src={item.Image} alt={item.Name} className="product-image" />
-              <div className="product-info">
-                <h3 className="product-name">{item.Name}</h3>
-                <p className="product-price">{item.Price}</p>
-                <button 
-                  className="view-button"
-                  onClick={() => navigate(item.Link)}
-                >
-                  View Details
-                </button>
-              </div>
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              <img src={product.image} alt={product.name} />
+              <h3>{product.name}</h3>
+              <p className="price">${product.price.toFixed(2)}</p>
+              <div className="rating">Rating: {product.rating}/5</div>
+              <button onClick={() => navigate(`/product/${product.id}`)}>
+                View Details
+              </button>
             </div>
           ))}
         </div>
