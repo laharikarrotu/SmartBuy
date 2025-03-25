@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "Name": "Purina Pro Plan Sensitive Skin & Stomach Adult Dry Dog Food",
+      "Category": "Pet Food",
+      "Price": "$89.99",
+      "DiscountedPrice": 89.99,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU1_HP_FW01_DMA",
+      "Link": "/product/purina-pro-plan-sensitive"
+    },
+    {
+      "Name": "Hill's Science Diet Adult Sensitive Stomach & Skin Dog Food",
+      "Category": "Pet Food",
+      "Price": "$83.99",
+      "DiscountedPrice": 83.99,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU2_HP_FW01_DMA",
+      "Link": "/product/hills-science-diet-sensitive"
+    },
+    {
+      "Name": "Blue Buffalo Life Protection Formula Adult Dog Food",
+      "Category": "Pet Food",
+      "Price": "$64.99",
+      "DiscountedPrice": 64.99,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU3_HP_FW01_DMA",
+      "Link": "/product/blue-buffalo-life-protection"
+    },
+    {
+      "Name": "Royal Canin Size Health Nutrition Small Adult Dog Food",
+      "Category": "Pet Food",
+      "Price": "$59.99",
+      "DiscountedPrice": 59.99,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644550-Feb25_4CU4_HP_FW01_DMA",
+      "Link": "/product/royal-canin-small-adult"
+    },
+    {
+      "Name": "Grooming Salon - Valentine's Day Package",
+      "Category": "Services",
+      "Price": "2X Points",
+      "DiscountedPrice": null,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD",
+      "Link": "/services/grooming",
+      "ExpirationDate": "14-Feb"
+    },
+    {
+      "Name": "Dog Training - 6-wk. Training Classes",
+      "Category": "Services",
+      "Price": "$129",
+      "DiscountedPrice": 129,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD",
+      "Link": "/services/training",
+      "ExpirationDate": "2-Mar"
+    },
+    {
+      "Name": "PetsHotel - Book 4-night stay, get the 5th night FREE",
+      "Category": "Services",
+      "Price": "5th Night Free",
+      "DiscountedPrice": null,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS3_HP-CWD",
+      "Link": "/services/petshotel",
+      "ExpirationDate": "2-Mar"
+    },
+    {
+      "Name": "Doggie Day Camp - New campers SAVE 50% on 1st day of play",
+      "Category": "Services",
+      "Price": "50% OFF",
+      "DiscountedPrice": null,
+      "Image": "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS4_HP-CWD",
+      "Link": "/services/doggie-day-camp",
+      "ExpirationDate": "No specific expiration"
+    }
+  ]
+} 

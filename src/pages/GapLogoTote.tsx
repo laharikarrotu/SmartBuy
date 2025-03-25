@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -15,7 +16,7 @@ interface CartItem {
   image: string;
 }
 
-export default function GapLogoTote(): JSX.Element {
+export default function GapLogoTote(): React.JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, loginWithRedirect, user } = useAuth0();

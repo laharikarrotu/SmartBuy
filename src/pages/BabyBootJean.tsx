@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import './BabyBootJean.scss';
+import { useCart } from '../contexts/CartContext';
 
 interface Size {
   label: string;
@@ -32,6 +33,8 @@ export const BabyBootJean = () => {
   const [fadeOut, setFadeOut] = useState(false);
   const [showAddedNotification, setShowAddedNotification] = useState(false);
   const [isAddingToBag, setIsAddingToBag] = useState(false);
+  const [selectedColor, setSelectedColor] = useState('');
+  const { addToCart } = useCart();
 
   const handleRewardsResponse = async (isRewardsMember: boolean) => {
     // Immediately hide prompt to prevent multiple clicks
@@ -126,35 +129,17 @@ export const BabyBootJean = () => {
     { label: '35', available: true }
   ];
 
-  const handleAddToCart = () => {
-    if (!selectedSize) return;
-
-    const cartItem: CartItem = {
-      id: product.id,
-      name: product.name,
-      price: product.discountedPrice,
-      originalPrice: product.originalPrice,
-      color: 'Black',
-      size: selectedSize,
-      fit: selectedFit,
-      quantity: quantity,
-      image: product.images[0]
-    };
-
-    const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    localStorage.setItem('cart', JSON.stringify([...existingCart, cartItem]));
-
-    setShowAddedNotification(true);
-    
-    // Dispatch custom event for AI to respond
-    const addToCartEvent = new CustomEvent('itemAddedToCart', {
-      detail: { isAuthenticated }
-    });
-    document.dispatchEvent(addToCartEvent);
-
-    setTimeout(() => {
-      setShowAddedNotification(false);
-    }, 2000);
+  const handleAddToBag = () => {
+    if (selectedSize && selectedColor) {
+      addToCart({
+        id: 'baby-boot-jean',
+        name: 'Baby Boot Jean',
+        price: 89.95,
+        image: '/images/baby-boot-jean.jpg',
+        quantity: 1,
+        sizes: selectedSize
+      });
+    }
   };
 
   const handleSignInClick = () => {
@@ -249,7 +234,12 @@ export const BabyBootJean = () => {
             <div className="size-selection">
               <div className="size-header">
                 <label>Size</label>
-                <a href="#" className="size-guide">Size guide</a>
+                <button 
+                  className="size-guide-link"
+                  onClick={() => {/* handle size guide click */}}
+                >
+                  Size Guide
+                </button>
               </div>
               <div className="size-options">
                 {sizes.map(size => (
@@ -291,7 +281,7 @@ export const BabyBootJean = () => {
 
             <button 
               className="add-to-bag"
-              onClick={handleAddToCart}
+              onClick={handleAddToBag}
               disabled={!selectedSize}
             >
               Add to cart

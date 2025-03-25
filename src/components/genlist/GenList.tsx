@@ -31,7 +31,7 @@ interface CreateListArgs {
   heading: string;
   list_array: string[];
 }
-interface EditListArgs extends CreateListArgs {}
+type EditListArgs = CreateListArgs
 interface RemoveListArgs {
   id: string;
 }
@@ -242,7 +242,7 @@ function GenListComponent() {
 
       if (fCalls.length > 0) {
         fCalls.forEach((fCall) => {
-          let functionResponse = {
+          const functionResponse = {
             id: fCall.id,
             name: fCall.name,
             response: {

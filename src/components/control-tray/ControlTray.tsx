@@ -16,7 +16,7 @@
 
 import cn from "classnames";
 
-import { memo, ReactNode, RefObject, useEffect, useRef, useState } from "react";
+import { memo, ReactNode, RefObject, useEffect, useRef, useState, useCallback } from "react";
 import { useLiveAPIContext } from "../../contexts/LiveAPIContext";
 import { UseMediaStreamResult } from "../../hooks/use-media-stream-mux";
 import { useScreenCapture } from "../../hooks/use-screen-capture";
@@ -32,7 +32,7 @@ interface Position {
 }
 
 export type ControlTrayProps = {
-  videoRef: RefObject<HTMLVideoElement>;
+  videoRef: RefObject<HTMLVideoElement | null>;
   children?: ReactNode;
   supportsVideo: boolean;
   onVideoStreamChange?: (stream: MediaStream | null) => void;
@@ -42,12 +42,12 @@ type MediaStreamButtonProps = {
   isStreaming: boolean;
   onIcon: string;
   offIcon: string;
-  start: () => Promise<any>;
-  stop: () => any;
+  start: () => Promise<MediaStream | null>;
+  stop: () => void;
 };
 
 /**
- * button used for triggering webcam or screen-capture
+ * Button used for triggering webcam or screen-capture
  */
 const MediaStreamButton = memo(
   ({ isStreaming, onIcon, offIcon, start, stop }: MediaStreamButtonProps) =>
@@ -62,10 +62,12 @@ const MediaStreamButton = memo(
     ),
 );
 
+MediaStreamButton.displayName = 'MediaStreamButton';
+
 function ControlTray({
   videoRef,
   children,
-  onVideoStreamChange = () => {},
+  onVideoStreamChange = () => undefined,
   supportsVideo,
 }: ControlTrayProps) {
   const videoStreams = [useWebcam(), useScreenCapture()];
@@ -130,11 +132,15 @@ function ControlTray({
         return;
       }
 
-      const ctx = canvas.getContext("2d")!;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        return;
+      }
+
       canvas.width = video.videoWidth * 0.25;
       canvas.height = video.videoHeight * 0.25;
-      if (canvas.width + canvas.height > 0) {
-        ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+      if (canvas.width + canvas.height > 0 && video) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         const base64 = canvas.toDataURL("image/jpeg", 1.0);
         const data = base64.slice(base64.indexOf(",") + 1, Infinity);
         client.sendRealtimeInput([{ mimeType: "image/jpeg", data }]);
@@ -157,12 +163,12 @@ function ControlTray({
       const mediaStream = await next.start();
       setActiveVideoStream(mediaStream);
       onVideoStreamChange(mediaStream);
+      return mediaStream;
     } else {
       setActiveVideoStream(null);
       onVideoStreamChange(null);
+      return null;
     }
-
-    videoStreams.filter((msr) => msr !== next).forEach((msr) => msr.stop());
   };
 
   // Add drag handlers
@@ -174,18 +180,18 @@ function ControlTray({
     });
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (isDragging) {
       setPosition({
         x: e.clientX - dragOffset.x,
         y: e.clientY - dragOffset.y,
       });
     }
-  };
+  }, [isDragging, dragOffset]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
-  };
+  }, []);
 
   useEffect(() => {
     if (isDragging) {
@@ -196,7 +202,7 @@ function ControlTray({
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isDragging, dragOffset]);
+  }, [isDragging, handleMouseMove, handleMouseUp]);
 
   return (
     <section 

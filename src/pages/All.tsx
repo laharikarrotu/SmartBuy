@@ -16,22 +16,22 @@ const PopularPicks = [
   {
     points: "5X",
     category: "All dog food, any brand",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU1_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD"
   },
   {
     points: "5X",
     category: "All cat food & treats, any brand",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU2_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD"
   },
   {
     points: "5X",
     category: "All dog treats, any brand",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU3_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS3_HP-CWD"
   },
   {
     points: "5X",
     category: "Any Salon, PetsHotel, Doggie Day Camp, or Training service",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CU4_HP_FW01_DMA"
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS4_HP-CWD"
   }
 ];
 
@@ -71,32 +71,32 @@ const PromotionalBanner = {
 const PetCategories = [
   {
     name: "Dog",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS1_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT",
     link: "/dog"
   },
   {
     name: "Cat",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS2_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS2_NewPet_DT",
     link: "/category/cat"
   },
   {
     name: "Fish",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS3_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS3_NewPet_DT",
     link: "/category/fish"
   },
   {
     name: "Bird",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS4_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS4_NewPet_DT",
     link: "/category/birds"
   },
   {
     name: "Reptile",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS5_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS5_NewPet_DT",
     link: "/category/reptiles"
   },
   {
     name: "Small Pet",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2678953-Jan25_6TUS6_NewPet_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS6_NewPet_DT",
     link: "/category/small-pets"
   }
 ];
@@ -105,33 +105,29 @@ const Services = [
   {
     name: "Grooming Salon",
     description: "Valentine's Day Package - Earn 2X points on package thru 2/14",
-    visualElements: "Grooming Salon logo, 2X points callout, dog wearing a Valentine's bandana",
     expirationDate: "14-Feb",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_4CS1_HP_FW01_DT",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD",
     link: "/services/grooming"
   },
   {
     name: "Dog Training",
     description: "6-wk. Training Classes - Only $129 thru 3/2",
-    visualElements: "Dog Training logo, dog wearing a graduation cap",
     expirationDate: "2-Mar",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2268408-Jan25_4CS2_HP-FW48_DMA",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD",
     link: "/services/training"
   },
   {
     name: "PetsHotel",
     description: "Book a 4-night stay, get the 5th night FREE thru 3/2",
-    visualElements: "PetsHotel logo, dog laying in a dog bed",
     expirationDate: "2-Mar",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2268408-Jan25_4CS3_HP-FW48_DMA",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS3_HP-CWD",
     link: "/services/petshotel"
   },
   {
     name: "Doggie Day Camp",
     description: "Doggie Day Camp - New campers SAVE 50% on 1st day of play",
-    visualElements: "Doggie Day Camp logo, three dogs playing",
     expirationDate: "No specific expiration mentioned",
-    image: "https://s7d2.scene7.com/is/image/smartbuy/WEB-2268408-Jan25_4CS4_HP-FW48_DMA",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS4_HP-CWD",
     link: "/services/doggie-day-camp"
   }
 ];
@@ -248,25 +244,67 @@ const FeaturedTechProducts = [
   }
 ];
 
+const WomenCategories = [
+  {
+    name: "Jeans",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD",
+    link: "/category/womens-jeans"
+  },
+  {
+    name: "Tops & T-Shirts",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD",
+    link: "/category/womens-tops"
+  },
+  {
+    name: "Dresses",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS3_HP-CWD",
+    link: "/category/womens-dresses"
+  },
+  {
+    name: "Activewear",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS4_HP-CWD",
+    link: "/category/womens-activewear"
+  }
+];
+
+const WomenFeaturedProducts = [
+  {
+    name: "Mid Rise Baby Boot Jean",
+    price: "$31.00",
+    originalPrice: "$79.95",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD",
+    link: "/baby-boot-jean"
+  },
+  {
+    name: "Modern Rib Pullover",
+    price: "$45.00",
+    originalPrice: "$89.95",
+    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD",
+    link: "/modern-rib-pullover"
+  }
+];
+
 const All: React.FC = () => {
   const navigate = useNavigate();
-  const { isAuthenticated, loginWithPopup } = useAuth0();
+  const { isAuthenticated } = useAuth0();
   const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<string>("default");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    console.log("All.tsx is mounted!");
     const fetchProducts = async () => {
       try {
         const response = await fetch("/smartbuy_all_products.json");
         const data = await response.json();
-        setProducts(data);
+        setProducts(data.products);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        // Log error to a proper logging service
+        if (error instanceof Error) {
+          // You could replace this with a proper logging service
+          console.error("Error fetching products:", error.message);
+        }
       } finally {
         setLoading(false);
       }
@@ -292,7 +330,6 @@ const All: React.FC = () => {
   }, [categoryFilter, sortOption, products]);
 
   if (loading) return <div className="loading-message">Loading pet products...</div>;
-  if (error) return <div className="error-message">Error: {error}</div>;
 
   return (
     <div className="home-page">
@@ -302,19 +339,178 @@ const All: React.FC = () => {
       </div>
 
       {/* Hero Banner */}
-      <section className="hero-banner">
-        <div className="banner-content">
-          <div className="banner-text">
-            <h1>Earn 5X points*</h1>
-            <h2>10% back in savings</h2>
-            <p>products, services or donations thru 2/9</p>
-            <button className="activate-button">Activate now</button>
+      <section className="hero-banner" style={{
+        background: `linear-gradient(45deg, 
+          rgba(255, 89, 94, 0.85), 
+          rgba(255, 202, 58, 0.85),
+          rgba(138, 201, 38, 0.85),
+          rgba(25, 130, 196, 0.85))`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '600px',
+        display: 'flex',
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div className="banner-content" style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 40px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: '100%'
+        }}>
+          <div className="banner-text" style={{
+            flex: '1',
+            color: 'white',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
+          }}>
+            <h1 style={{
+              fontSize: '4rem',
+              marginBottom: '1.5rem',
+              fontWeight: 'bold',
+              lineHeight: '1.2'
+            }}>Everything You Need<br/>All in One Place</h1>
+            <h2 style={{
+              fontSize: '2rem',
+              marginBottom: '1.5rem',
+              fontWeight: '400',
+              color: '#FFE5E5'
+            }}>Pets • Fashion • Electronics</h2>
+            <p style={{
+              fontSize: '1.2rem',
+              marginBottom: '2rem',
+              maxWidth: '600px',
+              lineHeight: '1.6'
+            }}>Discover amazing deals across all categories with up to 50% off on selected items</p>
+            <div style={{ display: 'flex', gap: '20px' }}>
+              <button 
+                onClick={() => navigate('/new-arrivals')}
+                style={{
+                  padding: '15px 40px',
+                  fontSize: '1.1rem',
+                  backgroundColor: '#FF595E',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '30px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'uppercase',
+                  fontWeight: '600',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                }}
+              >
+                Shop Now
+              </button>
+              <button 
+                onClick={() => navigate('/deals')}
+                style={{
+                  padding: '15px 40px',
+                  fontSize: '1.1rem',
+                  backgroundColor: 'transparent',
+                  color: 'white',
+                  border: '2px solid white',
+                  borderRadius: '30px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  textTransform: 'uppercase',
+                  fontWeight: '600'
+                }}
+              >
+                View Deals
+              </button>
+            </div>
           </div>
-          <img 
-            src="https://s7d2.scene7.com/is/image/smartbuy/WEB-2644550-Feb25_HCHS_HP_FW01_DT"
-            alt="smartbuy Treats Rewards"
-            className="banner-image"
-          />
+          <div className="banner-images" style={{
+            flex: '1',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '20px',
+            padding: '20px'
+          }}>
+            <img 
+              src="https://s7d2.scene7.com/is/image/PetSmart/WEB-2678953-Jan25_6TUS1_NewPet_DT" 
+              alt="Pet Category"
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover',
+                borderRadius: '15px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                transform: 'rotate(-5deg)'
+              }}
+            />
+            <img 
+              src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6505/6505140_sd.jpg" 
+              alt="Electronics Category"
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover',
+                borderRadius: '15px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                transform: 'rotate(5deg)'
+              }}
+            />
+            <img 
+              src="https://img.shopstyle-cdn.com/sim/96/81/9681c7c8db9e0e4e6e9e5c8c8c8c8c8c_best/gap-high-rise-vintage-slim-jeans.jpg" 
+              alt="Fashion Category"
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover',
+                borderRadius: '15px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                transform: 'rotate(5deg)'
+              }}
+            />
+            <img 
+              src="https://img.shopstyle-cdn.com/sim/44/a0/44a0c8c8db9e0e4e6e9e5c8c8c8c8c8c_best/gap-spring-lookbook.jpg" 
+              alt="Deals Category"
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover',
+                borderRadius: '15px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+                transform: 'rotate(-5deg)'
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Women's Categories Section */}
+      <section className="categories-section">
+        <h2>Shop Women's</h2>
+        <div className="categories-grid">
+          {WomenCategories.map((category, index) => (
+            <div key={index} className="category-card" onClick={() => navigate(category.link)}>
+              <img src={category.image} alt={category.name} />
+              <h3>{category.name}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Women's Featured Products */}
+      <section className="featured-products">
+        <h2>Featured Women's Styles</h2>
+        <div className="products-grid">
+          {WomenFeaturedProducts.map((product, index) => (
+            <div key={index} className="product-card" onClick={() => navigate(product.link)}>
+              <img src={product.image} alt={product.name} />
+              <div className="product-info">
+                <h3>{product.name}</h3>
+                <div className="price-container">
+                  <span className="sale-price">{product.price}</span>
+                  <span className="original-price">{product.originalPrice}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -395,7 +591,6 @@ const All: React.FC = () => {
               key={index} 
               className="category-card"
               onClick={() => {
-                console.log('Navigating to:', category.name === "Dog" ? "/dog" : category.link);
                 if (category.name === "Dog") {
                   navigate('/dog');
                 } else {
@@ -415,7 +610,7 @@ const All: React.FC = () => {
       {/* Products Grid */}
       <div className="store-layout">
         <div className="products-grid">
-          {products.map((item, index) => (
+          {filteredProducts.map((item, index) => (
             <div key={index} className="product-card">
               <img src={item.Image} alt={item.Name} className="product-image" />
               <div className="product-info">

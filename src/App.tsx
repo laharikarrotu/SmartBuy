@@ -18,17 +18,13 @@ import { useRef, useState } from "react";
 import "./App.scss";
 import { LiveAPIProvider } from "./contexts/LiveAPIContext";
 import { CartProvider } from "./contexts/CartContext";
-import SidePanel from "./components/side-panel/SidePanel";
-import { GenList } from "./components/genlist/GenList";
 import ControlTray from "./components/control-tray/ControlTray";
-import cn from "classnames";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/header/Header';
 import { NavAssistant } from './components/nav-assistant/NavAssistant';
 import { BabyBootJean } from './pages/BabyBootJean';
 import { Cart } from './pages/Cart';
 import { OrderPaymentConfirmation } from './pages/OrderPaymentConfirmation';
-import { Profile } from './pages/Profile';
 import All from './pages/All';
 import Dog from './pages/Dog';
 import TV from './pages/TV';
@@ -46,6 +42,7 @@ import GapLogoTote from './pages/GapLogoTote';
 import ProductDetail from "./pages/ProductDetail";
 import PersonalizedProductDetail from './pages/PersonalizedProductDetail';
 import InStore from "./pages/InStore";
+import Womens from './pages/Womens';
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY as string;
 if (typeof API_KEY !== "string") {
@@ -56,10 +53,7 @@ const host = "generativelanguage.googleapis.com";
 const uri = `wss://${host}/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent`;
 
 function App() {
-  // this video reference is used for displaying the active stream, whether that is the webcam or screen capture
-  // feel free to style as you see fit
   const videoRef = useRef<HTMLVideoElement>(null);
-  // either the screen capture, the video or null, if null we hide it
   const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
 
   return (
@@ -73,6 +67,15 @@ function App() {
               <Routes>
                 <Route path="/" element={<All />} />
                 <Route path="/all" element={<All />} />
+                <Route path="/womens" element={<Womens />} />
+                <Route path="/womens/new-arrivals" element={<Womens />} />
+                <Route path="/womens/jeans" element={<BabyBootJean />} />
+                <Route path="/womens/tops" element={<ModernRibPullover />} />
+                <Route path="/womens/dresses" element={<Womens />} />
+                <Route path="/womens/activewear" element={<Womens />} />
+                <Route path="/womens/sweaters" element={<Womens />} />
+                <Route path="/womens/denim-guide" element={<Womens />} />
+                <Route path="/womens/spring-lookbook" element={<Womens />} />
                 <Route path="/dog" element={<Dog />} />
                 <Route path="/tv" element={<TV />} />
                 <Route path="/computers-tablets" element={<ComputersAndTablets />} />
@@ -85,11 +88,6 @@ function App() {
                 <Route path="/baby-boot-jean" element={<BabyBootJean />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/order-payment-confirmation" element={<OrderPaymentConfirmation />} />
-                <Route path="/profile" element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                } />
                 <Route path="/personalized" element={
                   <ProtectedRoute>
                     <PersonalizedPage />
@@ -102,14 +100,18 @@ function App() {
                 <Route path="/personalized/:id" element={<PersonalizedProductDetail />} />
               </Routes>
               <div className="video-container">
-                <video ref={videoRef} autoPlay muted playsInline />
+                <video 
+                  ref={videoRef} 
+                  autoPlay 
+                  muted 
+                  playsInline 
+                  style={{ display: videoStream ? 'block' : 'none' }}
+                />
                 <ControlTray
                   videoRef={videoRef}
                   onVideoStreamChange={setVideoStream}
                   supportsVideo={true}
-                >
-                  {/* put your own buttons here */}
-                </ControlTray>
+                />
               </div>
             </LiveAPIProvider>
           </div>

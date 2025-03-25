@@ -2,29 +2,22 @@
  * Copyright 2024 Google LLC
  * Licensed under the Apache License, Version 2.0
  */
-import { memo, useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { memo, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLiveAPIContext } from '../../contexts/LiveAPIContext';
 import { type Tool, SchemaType } from "@google/generative-ai";
 
-interface FunctionCall {
+interface ToolCall {
   name: string;
   args?: {
     route?: string;
-    productId?: string;
-    fit?: string;
-    size?: string;
-    method?: string;
     action?: string;
-    category?: string;
     isRewardsMember?: boolean;
-    name?: string;
-    field?: string;
-    value?: string;
-    phoneNumber?: string;
-    code?: string;
-    inseam?: string;
   };
+}
+
+interface ToolCallEvent {
+  functionCalls: ToolCall[];
 }
 
 const systemInstructionObject = {
@@ -33,6 +26,23 @@ const systemInstructionObject = {
 
     Navigation Instructions:
     - Respond to greetings like 'hi', 'hello', 'hey' with 'Hi, how can I help you today?'
+    
+    - For women's clothing related queries:
+      - For general women's clothing ('women's clothes', 'women's fashion', 'women's section'): 
+        NAVIGATE to '/womens' and say 'Here are our women's clothing categories'
+      - For jeans ('jeans', 'denim', 'women's jeans'): 
+        NAVIGATE to '/category/womens-jeans' and say 'Browse our collection of women's jeans'
+      - For tops ('tops', 't-shirts', 'blouses', 'shirts'): 
+        NAVIGATE to '/category/womens-tops' and say 'Check out our selection of women's tops'
+      - For dresses ('dresses', 'jumpsuits', 'rompers'): 
+        NAVIGATE to '/category/womens-dresses' and say 'Explore our dresses and jumpsuits'
+      - For activewear ('activewear', 'athletic wear', 'workout clothes'): 
+        NAVIGATE to '/category/womens-activewear' and say 'Find your perfect workout outfit'
+      - For specific items:
+        - Baby Boot Jean: NAVIGATE to '/baby-boot-jean' and say 'Here's our popular Baby Boot Jean'
+        - Modern Rib Pullover: NAVIGATE to '/modern-rib-pullover' and say 'Check out our Modern Rib Pullover'
+        - Straw Panama Hat: NAVIGATE to '/straw-panama-hat' and say 'Here's our stylish Straw Panama Hat'
+        - Gap Logo Tote: NAVIGATE to '/gap-logo-tote' and say 'Take a look at our Gap Logo Tote'
     
     - For electronics related queries:
       - For general electronics ('electronics', 'shop electronics'): NAVIGATE to '/tv' and say 'Here are our electronics categories'
@@ -93,7 +103,17 @@ const toolObject: Tool[] = [{
         properties: {
           route: {
             type: SchemaType.STRING,
+            format: "enum",
             enum: [
+              "/womens",
+              "/category/womens-jeans",
+              "/category/womens-tops",
+              "/category/womens-dresses",
+              "/category/womens-activewear",
+              "/baby-boot-jean",
+              "/modern-rib-pullover",
+              "/straw-panama-hat",
+              "/gap-logo-tote",
               "/dog",
               "/tv",
               "/computers-tablets",
@@ -127,6 +147,7 @@ const toolObject: Tool[] = [{
         properties: {
           action: {
             type: SchemaType.STRING,
+            format: "enum",
             enum: ["click"]
           }
         },
@@ -154,6 +175,7 @@ const toolObject: Tool[] = [{
         properties: {
           action: {
             type: SchemaType.STRING,
+            format: "enum",
             enum: ["show"]
           }
         },
@@ -167,14 +189,24 @@ const NavAssistantComponent = () => {
   const { client, setConfig, connected } = useLiveAPIContext();
   const navigate = useNavigate();
 
+  // Debug logging with proper type checking
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.debug('NavAssistant mounted', { client: !!client, connected });
+    }
+  }, [client, connected]);
+
   // Set up initial config
   useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.debug('Setting up NavAssistant config');
+    }
     setConfig({
       model: "models/gemini-2.0-flash-exp",
       tools: toolObject,
       systemInstruction: systemInstructionObject,
       generationConfig: {
-        responseModalities: "audio",
+        responseModalities: "audio" as const,
         speechConfig: {
           voiceConfig: {
             prebuiltVoiceConfig: {
@@ -204,16 +236,13 @@ const NavAssistantComponent = () => {
   useEffect(() => {
     if (!client) return undefined;
 
-    const handleToolCall = (toolCall: { functionCalls: any[] }) => {
-      toolCall.functionCalls.forEach(async (fCall: any) => {
+    const handleToolCall = (toolCall: ToolCallEvent) => {
+      toolCall.functionCalls.forEach(async (fCall: ToolCall) => {
         switch (fCall.name) {
           case "navigate":
             if (fCall.args?.route) {
               if (fCall.args.route.startsWith('/personalized/')) {
-                // Extract the product ID
                 const productId = fCall.args.route.split('/').pop();
-                
-                // Find and click the product card
                 const productCard = document.querySelector(
                   `.product-card[data-product-id="${productId}"]`
                 ) as HTMLElement;
@@ -255,7 +284,6 @@ const NavAssistantComponent = () => {
             break;
           
           case "showInstoreRecommendations":
-            // Trigger the instore recommendations display
             const event = new CustomEvent('showInstoreRecommendations');
             document.dispatchEvent(event);
             break;

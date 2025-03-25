@@ -36,7 +36,7 @@ export const Cart: React.FC = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [error, setError] = useState('');
   const [isPaymentComplete, setIsPaymentComplete] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState('pickup'); // 'pickup' or 'ship'
+  const [deliveryMethod, setDeliveryMethod] = useState('standard');
   const [showShippingForm, setShowShippingForm] = useState(false);
   const [shippingAddress, setShippingAddress] = useState({
     fullName: '',
@@ -50,6 +50,7 @@ export const Cart: React.FC = () => {
   const { isAuthenticated, user } = useAuth0();
   const [paymentLink, setPaymentLink] = useState('');
   const [showRewardsDiscount, setShowRewardsDiscount] = useState(false);
+  const [shipping, setShipping] = useState('Standard Shipping');
 
   const shippingOptions = [
     { method: 'Same-Day Delivery', cost: 9.99, time: 'Today' },
@@ -68,9 +69,9 @@ export const Cart: React.FC = () => {
   };
 
   const subtotal = calculateSubtotal();
-  const shipping = getShippingCost();
+  const shippingCost = getShippingCost();
   const tax = subtotal * 0.0825; // 8.25% tax
-  const total = subtotal + shipping + tax;
+  const total = subtotal + shippingCost + tax;
 
   const handleSaveAddress = (e: React.FormEvent) => {
     e.preventDefault();
@@ -194,6 +195,12 @@ export const Cart: React.FC = () => {
       setIsAddressComplete(true);
     }
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    // Update shipping and address whenever they change
+    setShippingAddress(savedUserData.shippingAddress);
+    setSelectedShipping(savedUserData.shipping);
+  }, [savedUserData.shippingAddress, savedUserData.shipping]);
 
   // Load cart items from localStorage on component mount
   useEffect(() => {
@@ -469,7 +476,7 @@ export const Cart: React.FC = () => {
               <div className="summary-row">
                 <span>Shipping:</span>
                 <span>
-                  {shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
+                  {shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}
                 </span>
               </div>
             )}

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -14,7 +15,7 @@ interface CartItem {
   image: string;
 }
 
-export default function ModernRibPullover(): JSX.Element {
+export default function ModernRibPullover(): React.JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, loginWithRedirect, user } = useAuth0();
