@@ -17,22 +17,22 @@ const PopularPicks = [
   {
     points: "5X",
     category: "All dog food, any brand",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD"
+    image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/dog-food-2"
   },
   {
     points: "5X",
     category: "All cat food & treats, any brand",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD"
+    image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/cat-food-treats"
   },
   {
     points: "5X",
     category: "All dog treats, any brand",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS3_HP-CWD"
+    image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/dog-treats"
   },
   {
     points: "5X",
     category: "Any Salon, PetsHotel, Doggie Day Camp, or Training service",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS4_HP-CWD"
+    image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto/pet-services"
   }
 ];
 
@@ -248,22 +248,22 @@ const FeaturedTechProducts = [
 const WomenCategories = [
   {
     name: "Jeans",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD",
+    image: "https://img.freepik.com/free-photo/jeans_1203-8093.jpg",
     link: "/category/womens-jeans"
   },
   {
     name: "Tops & T-Shirts",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD",
+    image: "https://img.freepik.com/free-photo/white-t-shirts-with-copy-space_53876-102012.jpg",
     link: "/category/womens-tops"
   },
   {
     name: "Dresses",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS3_HP-CWD",
+    image: "https://img.freepik.com/free-photo/elegant-young-woman-brown-coat-walking-street_1157-20434.jpg",
     link: "/category/womens-dresses"
   },
   {
     name: "Activewear",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS4_HP-CWD",
+    image: "https://img.freepik.com/free-photo/woman-doing-fitness-black-outfit_23-2148744590.jpg",
     link: "/category/womens-activewear"
   }
 ];
@@ -273,14 +273,14 @@ const WomenFeaturedProducts = [
     name: "Mid Rise Baby Boot Jean",
     price: "$31.00",
     originalPrice: "$79.95",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS1_HP-CWD",
+    image: "https://img.freepik.com/free-photo/jeans_1203-8094.jpg",
     link: "/baby-boot-jean"
   },
   {
     name: "Modern Rib Pullover",
     price: "$45.00",
     originalPrice: "$89.95",
-    image: "https://s7d2.scene7.com/is/image/PetSmart/WEB-2644551-Mar25_US-4CS2_HP-CWD",
+    image: "https://img.freepik.com/free-photo/warm-cozy-composition-with-sweater_23-2148786191.jpg",
     link: "/modern-rib-pullover"
   }
 ];
@@ -429,34 +429,42 @@ const All: React.FC = () => {
       </section>
 
       {/* Women's Categories Section */}
-      <section className="categories-section">
-        <h2>Shop Women's</h2>
-        <div className="categories-grid">
-          {WomenCategories.map((category, index) => (
-            <div key={index} className="category-card" onClick={() => navigate(category.link)}>
-              <img src={category.image} alt={category.name} />
-              <h3>{category.name}</h3>
-            </div>
-          ))}
+      <section className="categories-section women-categories">
+        <div className="section-container">
+          <h2>Shop Women's</h2>
+          <div className="categories-grid">
+            {WomenCategories.map((category, index) => (
+              <div key={index} className="category-card" onClick={() => navigate(category.link)}>
+                <div className="image-wrapper">
+                  <img src={category.image} alt={category.name} />
+                </div>
+                <h3>{category.name}</h3>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Women's Featured Products */}
-      <section className="featured-products">
-        <h2>Featured Women's Styles</h2>
-        <div className="products-grid">
-          {WomenFeaturedProducts.map((product, index) => (
-            <div key={index} className="product-card" onClick={() => navigate(product.link)}>
-              <img src={product.image} alt={product.name} />
-              <div className="product-info">
-                <h3>{product.name}</h3>
-                <div className="price-container">
-                  <span className="sale-price">{product.price}</span>
-                  <span className="original-price">{product.originalPrice}</span>
+      <section className="featured-products women-featured">
+        <div className="section-container">
+          <h2>Featured Women's Styles</h2>
+          <div className="products-grid">
+            {WomenFeaturedProducts.map((product, index) => (
+              <div key={index} className="product-card" onClick={() => navigate(product.link)}>
+                <div className="image-wrapper">
+                  <img src={product.image} alt={product.name} />
+                </div>
+                <div className="product-info">
+                  <h3>{product.name}</h3>
+                  <div className="price-container">
+                    <span className="sale-price">{product.price}</span>
+                    <span className="original-price">{product.originalPrice}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -509,22 +517,26 @@ const All: React.FC = () => {
         </div>
       </section>
 
-      {/* Popular Picks Section */}
+      {/* Popular Categories Section */}
       <section className="popular-picks">
-        <h2>Popular Categories</h2>
-        <div className="picks-grid">
-          {PopularPicks.map((pick, index) => (
-            <div key={index} className="pick-card">
-              <div className="points-badge">
-                <span className="points">{pick.points}</span>
-                <span className="pts">pts</span>
+        <div className="section-container">
+          <h2>Popular Categories</h2>
+          <div className="picks-grid">
+            {PopularPicks.map((pick, index) => (
+              <div key={index} className="pick-card">
+                <div className="points-badge">
+                  <span className="points">{pick.points}</span>
+                  <span className="pts">pts</span>
+                </div>
+                <div className="pick-content">
+                  <h3>{pick.category}</h3>
+                  <div className="image-wrapper">
+                    <img src={pick.image} alt={pick.category} />
+                  </div>
+                </div>
               </div>
-              <div className="pick-content">
-                <h3>{pick.category}</h3>
-                <img src={pick.image} alt={pick.category} />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

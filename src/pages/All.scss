@@ -1010,69 +1010,94 @@ body {
   }
 
   .popular-picks {
-    padding: 40px 20px;
-    background: #f7f7f7;
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     h2 {
       text-align: center;
       font-size: 2rem;
-      margin-bottom: 30px;
+      margin-bottom: 2.5rem;
+      color: #333;
     }
 
     .picks-grid {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 2rem;
+
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .pick-card {
       position: relative;
       background: white;
       border-radius: 12px;
-      overflow: visible;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+
+        img {
+          transform: scale(1.05);
+        }
+      }
 
       .points-badge {
         position: absolute;
-        top: -10px;
-        left: 10px;
+        top: -12px;
+        left: 20px;
         background: #e31837;
         color: white;
-        padding: 4px 12px;
+        padding: 0.5rem 1rem;
         border-radius: 20px;
-        z-index: 2;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        box-shadow: 0 2px 8px rgba(227, 24, 55, 0.3);
+        z-index: 1;
 
         .points {
-          font-weight: 600;
-          font-size: 1rem;
-          margin-right: 2px;
+          font-size: 1.2rem;
+          font-weight: 700;
         }
 
         .pts {
           font-size: 0.9rem;
+          margin-left: 2px;
         }
       }
 
       .pick-content {
-        margin-top: 15px;
-
         h3 {
-          margin-bottom: 15px;
           font-size: 1.1rem;
           line-height: 1.4;
           color: #333;
+          margin-bottom: 1.5rem;
+          min-height: 3rem;
         }
 
-        img {
-          width: 100%;
-          height: 180px;
-          object-fit: contain;
+        .image-wrapper {
+          aspect-ratio: 1;
+          overflow: hidden;
           border-radius: 8px;
           background: #f8f9fa;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
         }
       }
     }
@@ -1619,6 +1644,167 @@ body {
         color: white;
         font-size: 1.2rem;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+    }
+  }
+}
+
+.women-categories {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+
+    .category-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+
+        img {
+          transform: scale(1.05);
+        }
+
+        h3 {
+          background: rgba(0,0,0,0.7);
+        }
+      }
+
+      .image-wrapper {
+        aspect-ratio: 3/4;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      h3 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        margin: 0;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        font-size: 1.2rem;
+        text-align: center;
+        transition: background 0.3s ease;
+      }
+    }
+  }
+}
+
+.women-featured {
+  padding: 4rem 2rem;
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+    text-align: center;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
+    .product-card {
+      cursor: pointer;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+
+      .image-wrapper {
+        aspect-ratio: 3/4;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      .product-info {
+        padding: 1.5rem;
+        background: white;
+
+        h3 {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+          color: #333;
+        }
+
+        .price-container {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+
+          .sale-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #e31837;
+          }
+
+          .original-price {
+            font-size: 1.1rem;
+            color: #666;
+            text-decoration: line-through;
+          }
+        }
       }
     }
   }
